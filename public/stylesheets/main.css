@@ -1,0 +1,356 @@
+/*
+ * General Styles
+ */
+body {
+  background: #fff;
+  font-family: Droid Sans;
+  font-size: 10pt;
+  color: #4a4a4a;
+  margin: 0;
+  padding: 0;
+}
+p {
+  line-height: 14pt;
+  margin-bottom: 14pt;
+}
+a:link {
+  color: #2e75c7;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+a:visited {
+  color: #0f3b6e;
+  text-decoration: underline;
+}
+h1 {
+  font-size: 240%;
+}
+h2 {
+  font-size: 220%;
+}
+h3 {
+  font-size: 190%;
+}
+h4 {
+  font-size: 160%;
+}
+h5 {
+  font-size: 130%;
+}
+h6 {
+  font-size: 100%;
+}
+input[type="text"],
+input[type="password"] {
+  padding: 5px;
+  background: #fff;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  color: #606060;
+  font-family: Droid Sans;
+}
+input[type="submit"] {
+  font-family: Droid Sans;
+  border-radius: 4px;
+}
+div.clear {
+  clear: both;
+}
+.alignleft {
+  float: left;
+}
+.alignright {
+  float: right;
+}
+/*
+ * Wrapper and Header
+ */
+.wrapper {
+  width: 960px;
+  margin: 0 auto;
+}
+.page-header {
+  padding: 20px 0;
+  margin: 0 0 20px;
+  position: relative;
+}
+h1.logo a:link,
+h1.logo a:hover,
+h1.logo a:visited {
+  color: #2e75c7;
+  text-decoration: none;
+}
+h1.logo span.dot {
+  color: #e00;
+}
+h1.logo span.ie {
+  color: #25c42b;
+}
+.login-register {
+  position: absolute;
+  top: -1px;
+  right: 1px;
+  width: 301px;
+  height: 70px;
+  background: #2e75c7;
+  border-radius: 0 0 8px 8px;
+  border: 1px solid #1d4f8a;
+}
+.login-register .register {
+  width: 80px;
+  height: 10px;
+  padding: 30px 10px;
+  float: left;
+  text-align: center;
+}
+.login-register .register a:link,
+.login-register .register a:visited {
+  color: #fff;
+  text-decoration: none;
+}
+.login-register .register a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+.login-register .separator {
+  position: relative;
+  width: 21px;
+  height: 10px;
+  padding: 30px 0;
+  float: left;
+  text-align: center;
+}
+.login-register .separator span {
+  color: #a9ccf5;
+  background: #2e75c7;
+  position: relative;
+  z-index: 2;
+}
+.login-register .separator .line {
+  position: absolute;
+  left: 10px;
+  top: 0;
+  width: 1px;
+  height: 70px;
+  background: #a9ccf5;
+}
+.login-register form#login {
+  width: 160px;
+  padding: 10px;
+  float: left;
+  position: relative;
+}
+.login-register form#login input[type="text"] {
+  width: 152px;
+  height: 14px;
+  padding: 3px;
+  margin: 0 0 3px 0;
+  border: 1px solid #1d4f8a;
+  background: #deebfa;
+  color: #1d4f8a;
+  text-shadow: 0 1px 1px #fff;
+}
+.login-register form#login input[type="text"].password-watermark {
+  margin: 0;
+}
+.login-register form#login input[type="password"] {
+  width: 112px;
+  height: 14px;
+  padding: 3px 43px 3px 3px;
+  margin: 0;
+  border: 1px solid #1d4f8a;
+  background: #deebfa;
+  color: #1d4f8a;
+  text-shadow: 0 1px 1px #fff;
+}
+.login-register form#login input[type="submit"] {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 32px;
+  height: 22px;
+  padding: 0;
+  margin: 0;
+  border-radius: 0 4px 4px 0;
+  border: 1px solid #1d4f8a;
+  cursor: pointer;
+  color: #1d4f8a;
+  background: #aecef2;
+}
+.login-register form#login input[type="submit"]:hover {
+  background: #1d4f8a;
+  color: #fff;
+}
+/*
+ * Footer
+ */
+.page-footer {
+  margin: 20px 0;
+  background: #ddd;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+.page-footer p.footer-links {
+  text-align: center;
+  padding: 10px;
+  background: #eee;
+  border-radius: 6px 6px 0 0;
+  border-bottom: 1px solid #ccc;
+  color: #ccc;
+}
+.page-footer .footer-left {
+  float: left;
+  padding: 10px;
+  color: #7a7a7a;
+}
+.page-footer .footer-right {
+  float: right;
+  padding: 10px;
+  text-align: right;
+  color: #7a7a7a;
+}
+.page-footer p {
+  margin: 0;
+}
+/*
+ * Main Content
+ */
+.main-content {
+  float: left;
+  width: 580px;
+  background: #eee;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  position: relative;
+}
+.main-content .main-content-padded {
+  padding: 15px;
+}
+.section-title {
+  background: url("../images/title-corner.png") no-repeat top left;
+  position: relative;
+  min-height: 10px;
+  min-width: 20px;
+  left: -21px;
+  top: 10px;
+  text-shadow: 1px 1px 1px #11437d;
+  margin-bottom: 50px;
+}
+.section-title h2 {
+  font-size: 160%;
+  color: #fff;
+  padding: 5px 30px;
+  background: #2e75c7;
+  position: absolute;
+  top: 10px;
+  left: 8px;
+  box-shadow: 1px 1px 1px #11437d;
+}
+/*
+ * Jobpages Main Content
+ */
+.job-overview {
+  padding: 15px;
+  border-top: 1px solid #ccc;
+}
+.job-overview:nth-child(odd) {
+  background: #ddd;
+}
+.job-overview:nth-child(odd):hover {
+  background: #d7d7d7;
+}
+.job-overview:hover {
+  background: #e8e8e8;
+}
+.job-overview:last-child {
+  border-radius: 0 0 6px 6px;
+}
+.job-overview a.company-photo {
+  float: left;
+  width: 100px;
+  height: 100px;
+  background: #bbb;
+  border: 1px solid #999;
+}
+.job-overview .company-text {
+  float: right;
+  width: 430px;
+}
+.job-overview .company-text h3.company-name {
+  font-size: 140%;
+}
+.job-overview .company-text p.meta-data {
+  margin: 3px 0;
+  color: #888;
+  font-size: 90%;
+}
+.job-overview .company-text p.description {
+  margin: 0;
+}
+/*
+ * Sidebar
+ */
+.sidebar {
+  float: right;
+  width: 340px;
+}
+.sidebar .sidebar-section {
+  width: 340px;
+  margin-bottom: 20px;
+  background: #eee;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  position: relative;
+}
+.sidebar .sidebar-section:last-child {
+  margin: 0;
+}
+.sidebar .sidebar-section .sidebar-section-item {
+  padding: 15px;
+  border-top: 1px solid #ccc;
+}
+.sidebar .sidebar-section .sidebar-section-item:nth-child(odd) {
+  background: #ddd;
+}
+.sidebar .sidebar-section .sidebar-section-item:nth-child(odd):hover {
+  background: #d7d7d7;
+}
+.sidebar .sidebar-section .sidebar-section-item:hover {
+  background: #e8e8e8;
+}
+.sidebar .sidebar-section .sidebar-section-item:last-child {
+  border-radius: 0 0 6px 6px;
+}
+.sidebar .sidebar-section .sidebar-section-item a.sidebar-section-item-photo {
+  float: left;
+  width: 75px;
+  height: 75px;
+  background: #bbb;
+  border: 1px solid #999;
+}
+.sidebar .sidebar-section .sidebar-section-item .sidebar-section-item-text {
+  float: right;
+  width: 215px;
+}
+.sidebar .sidebar-section .sidebar-section-item .sidebar-section-item-text h4 {
+  font-size: 120%;
+}
+.sidebar .sidebar-section .sidebar-section-item .sidebar-section-item-text p.meta-data {
+  margin: 3px 0;
+  color: #888;
+  font-size: 90%;
+}
+.sidebar .sidebar-section .sidebar-section-item .sidebar-section-item-text p.description {
+  margin: 0;
+}
+/*
+ * Forms
+ */
+.form-display label {
+  float: left;
+  width: 120px;
+  padding: 7px 0 0 0;
+  margin: 0 10px 0 0;
+}

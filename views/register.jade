@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  section.main-content.register-main-content
+    div.section-title
+      h2 Register
+    div.main-content-padded
+      form#register.form-display(action="/users/new", method="POST")
+        label(for="username") Username:
+        input(type="text", name="username", id="register-username", value="")
+        br
+        label(for="email") Email:
+        input(type="text", name="email", id="register-email", value="")
+        br
+        label(for="confirm-email") Confirm Email:
+        input(type="text", name="confirm-email", id="register-confirm-email", value="")
+        br
+        label(for="password") Password:
+        input(type="password", name="password", id="register-password", value="")
+        br
+        label(for="confirm-password") Password:
+        input(type="password", name="password", id="register-confirm-password", value="")
+        br
+        input(type="submit", id="register-submit", class="submit-button", value="Register")

@@ -1,0 +1,317 @@
+// Variables
+maincolor = #2E75C7
+
+/*
+ * General Styles
+ */
+body
+  background white
+  font-family Droid Sans
+  font-size 10pt
+  color #4a4a4a
+  margin 0
+  padding 0
+
+p
+  line-height 14pt
+  margin-bottom 14pt
+
+a:link
+  color maincolor
+  text-decoration none
+a:hover
+  text-decoration underline
+a:visited
+  color #0F3B6E
+  text-decoration underline
+
+h1
+  font-size 240%
+h2
+  font-size 220%
+h3
+  font-size 190%
+h4
+  font-size 160%
+h5
+  font-size 130%
+h6
+  font-size 100%
+
+input[type="text"],
+input[type="password"]
+  padding 5px
+  background white
+  border 1px solid #AAAAAA
+  border-radius 4px
+  color #606060
+  font-family Droid Sans
+
+input[type="submit"]
+  font-family Droid Sans
+  border-radius 4px
+
+div.clear
+  clear both
+
+.alignleft
+  float left
+
+.alignright
+  float right
+
+
+/*
+ * Wrapper and Header
+ */
+.wrapper
+  width 960px
+  margin 0 auto
+
+.page-header
+  padding 20px 0
+  margin 0 0 20px
+  position relative
+
+h1.logo a:link,
+h1.logo a:hover,
+h1.logo a:visited
+  color maincolor
+  text-decoration none
+
+h1.logo span.dot
+  color #EE0000
+
+h1.logo span.ie
+  color #25C42B
+
+.login-register
+  position absolute
+  top -1px
+  right 1px
+  width 301px
+  height 70px
+  background maincolor
+  border-radius 0 0 8px 8px
+  border 1px solid #1D4F8A
+  & .register
+    width 80px
+    height 10px
+    padding 30px 10px
+    float left
+    text-align center
+    & a:link, a:visited
+      color white
+      text-decoration none
+    & a:hover
+      color white
+      text-decoration underline
+  & .separator
+    position relative
+    width 21px
+    height 10px
+    padding 30px 0
+    float left
+    text-align center
+    & span
+      color #A9CCF5
+      background maincolor
+      position relative
+      z-index 2
+    & .line
+      position absolute
+      left 10px
+      top 0
+      width 1px
+      height 70px
+      background #A9CCF5
+  & form#login
+    width 160px
+    padding 10px
+    float left
+    position relative
+    & input[type="text"]
+      width 152px
+      height 14px
+      padding 3px
+      margin 0 0 3px 0
+      border 1px solid #1D4F8A
+      background #DEEBFA
+      color #1D4F8A
+      text-shadow 0 1px 1px white
+      &.password-watermark
+        margin 0
+    & input[type="password"]
+      width 112px
+      height 14px
+      padding 3px 43px 3px 3px
+      margin 0
+      border 1px solid #1D4F8A
+      background #DEEBFA
+      color #1D4F8A
+      text-shadow 0 1px 1px white
+    & input[type="submit"]
+      position absolute
+      bottom 10px
+      right 10px
+      width 32px
+      height 22px
+      padding 0
+      margin 0
+      border-radius 0 4px 4px 0
+      border 1px solid #1D4F8A
+      cursor pointer
+      color #1D4F8A
+      background #AECEF2
+      &:hover
+        background #1D4F8A
+        color white
+
+
+/*
+ * Footer
+ */
+.page-footer
+  margin 20px 0
+  background #DDDDDD
+  border-radius 8px
+  border 1px solid #CCCCCC
+  & p.footer-links
+    text-align center
+    padding 10px
+    background #EEEEEE
+    border-radius 6px 6px 0 0
+    border-bottom 1px solid #CCCCCC
+    color #CCCCCC
+  & .footer-left
+    float left
+    padding 10px
+    color #7a7a7a
+  & .footer-right
+    float right
+    padding 10px
+    text-align right
+    color #7a7a7a
+  & p
+    margin 0
+
+
+/*
+ * Main Content
+ */
+.main-content
+  float left
+  width 580px
+  background #EEEEEE
+  border-radius 6px
+  border 1px solid #CCCCCC
+  position relative
+  & .main-content-padded
+    padding 15px
+.section-title
+  background url("../images/title-corner.png") no-repeat top left;
+  position relative
+  min-height 10px
+  min-width 20px
+  left -21px
+  top 10px
+  text-shadow 1px 1px 1px #11437D
+  margin-bottom 50px
+  & h2
+    font-size 160%
+    color white
+    padding 5px 30px
+    background maincolor
+    position absolute
+    top 10px
+    left 8px
+    box-shadow 1px 1px 1px #11437D
+
+
+/*
+ * Jobpages Main Content
+ */
+.job-overview
+  padding 15px
+  border-top 1px solid #CCCCCC
+  &:nth-child(odd)
+    background #DDDDDD
+    &:hover
+      background #D7D7D7
+  &:hover
+    background #E8E8E8
+  &:last-child
+    border-radius: 0 0 6px 6px
+  & a.company-photo
+    float left
+    width 100px
+    height 100px
+    background #BBBBBB
+    border 1px solid #999999
+  & .company-text
+    float right
+    width 430px
+    & h3.company-name
+      font-size 140%
+    & p.meta-data
+      margin 3px 0
+      color #888888
+      font-size 90%
+    & p.description
+      margin 0
+
+
+/*
+ * Sidebar
+ */
+.sidebar
+  float right
+  width 340px
+  & .sidebar-section
+    width 340px
+    margin-bottom 20px
+    background #EEEEEE
+    border-radius 6px
+    border 1px solid #CCCCCC
+    position relative
+    &:last-child
+      margin 0
+    & .sidebar-section-item
+      padding 15px
+      border-top 1px solid #CCCCCC
+      &:nth-child(odd)
+        background #DDDDDD
+        &:hover
+          background #D7D7D7
+      &:hover
+        background #E8E8E8
+      &:last-child
+        border-radius: 0 0 6px 6px
+      & a.sidebar-section-item-photo
+        float left
+        width 75px
+        height 75px
+        background #BBBBBB
+        border 1px solid #999999
+      & .sidebar-section-item-text
+        float right
+        width 215px
+        & h4
+          font-size 120%
+        & p.meta-data
+          margin 3px 0
+          color #888888
+          font-size 90%
+        & p.description
+          margin 0
+
+
+/*
+ * Forms
+ */
+.form-display
+  & label
+    float left
+    width 120px
+    padding 7px 0 0 0
+    margin 0 10px 0 0
