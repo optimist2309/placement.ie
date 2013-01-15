@@ -1,15 +1,16 @@
 {
   "name": "application-name",
+  "description": "A web application in nodejs for advertising and applying to internships",
   "version": "0.0.1",
   "private": true,
+  "author": "Gavin Flood <gavinflud@gmail.com> (http://github.com/gavinflud)",
   "scripts": {
-    "start": "node app"
+    "start": "node server.js"
   },
   "dependencies": {
     "express": "3.0.2",
     "jade": "*",
     "stylus": "*",
-    "mongoose": "*",
-    "date-utils": "*"
+    "mongoose": "*"
   }
 }
