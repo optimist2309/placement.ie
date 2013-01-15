@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  section.main-content.homepage-main-content
+    div.section-title
+      h2 Featured Jobs
+    - for (i = 0; i < 4; i++) {
+      div.job-overview
+        a.company-photo(href="#")
+        div.company-text
+          h3.company-name
+            a(href="#") Data Analyst | Sample Company
+          p.meta-data Posted On: 13/01/13 | Application Deadline: 14/02/13 | Location: Dublin
+          p.description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget dolor libero, vel interdum magna. Vestibulum tincidunt pharetra tincidunt. Donec laoreet orci eu mi venenatis condimentum.
+        div.clear
+    - }

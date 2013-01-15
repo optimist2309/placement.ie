@@ -1,0 +1,14 @@
+doctype 5
+html
+  head
+    title #{title} | #{subtitle}
+    link(rel="stylesheet", href="/stylesheets/reset.css")
+    link(rel="stylesheet", href="/stylesheets/main.css")
+    script(src="/javascripts/jquery.js")
+    script(src="/javascripts/visuals.js")
+  body
+    section.wrapper
+      include includes/header
+      block content
+      include includes/sidebar
+      include includes/footer
