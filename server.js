@@ -10,7 +10,8 @@ var express     = require('express'),
     stylus      = require('stylus'),
     config      = require('./config/config'),
     viewHelpers = require('./config/middlewares/viewHelpers'),
-    mongoose    = require('mongoose');
+    mongoose    = require('mongoose'),
+    MongoStore  = require('connect-mongo')(express);
 
 // Initialize database.
 mongoose.connect(config.db);
@@ -48,6 +49,18 @@ app.configure(function() {
   // Parse request body and allow use of PUT and DELETE.
   app.use(express.bodyParser());
   app.use(express.methodOverride());
+
+  // Parse cookies.
+  app.use(express.cookieParser());
+
+  // Store sessions in MongoDB.
+  app.use(express.session({
+    secret: 'XKF20AA31PP0',
+    store: new MongoStore({
+      url: config.db,
+      collection: 'sessions'
+    })
+  }));
 
   // Router to dispatch request to appropriate listener defined in routing table.
   app.use(app.router);

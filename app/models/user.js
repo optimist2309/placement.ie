@@ -7,16 +7,36 @@ var mongoose  = require('mongoose'),
     Schema    = mongoose.Schema;
 
 var UserSchema = new Schema({
+  username: {type: String, unique: true},
+  email: String,
+  password: String,
   forename: String,
   surname: String,
-  email: String,
-  username: String,
-  password: String,
   dateOfBirth: String,
-  title: String,
-  description: String,
-  field: String,
-  specifics: String
+  addressLine1: String,
+  addressLine2: String,
+  townCity: String,
+  county: String,
+  phone: String,
+  college: String,
+  collegeCourse: String,
+  collegeFrom: Number,
+  collegeTo: Number,
+  school: String,
+  leavingCert: Boolean,
+  schoolFrom: Number,
+  schoolTo: Number,
+  job: [{
+    employer: String,
+    jobTitle: String,
+    jobDesc: String,
+    jobFrom: Number,
+    jobTo: Number
+  }],
+  roleSeeking: String,
+  desiredDuration: Number
 });
 
-mongoose.model('User', UserSchema);
+var User = mongoose.model('User', UserSchema);
+
+module.exports = User;
