@@ -1,7 +1,5 @@
 var mongoose        = require('mongoose'),
     User            = require('../models/user'),
-    loadUser        = require('../../config/middlewares/loadUser'),
-    config          = require('../../config/config'),
     requestHelpers  = require('../../config/middlewares/requestHelpers');
 
 exports.logIn = function(req, res) {
@@ -11,6 +9,8 @@ exports.logIn = function(req, res) {
 exports.register = function(req, res) {
   var colleges = [
     "Athlone Institute of Technology",
+    "IT Tallaght",
+    "Bray Institute",
     "Dublin City University",
     "Dublin Institute of Technolgy",
     "University College Dublin",

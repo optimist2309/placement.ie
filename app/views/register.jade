@@ -139,5 +139,21 @@ block content
             - }
         br
         a(href="#", id="register-add-another-job") Add Another +
+
+        h3.form-heading Looking for
+        hr
+        label(for="roleSeeking") Position Seeking:
+        input(type="text", name="roleSeeking", id="register-role-seeking", value="")
+        br
+        label(for="desiredDuration") Desired Duration:
+        select(name="desiredDurationNumber", id="register-desired-duration-number")
+            - for (i = 1; i < 13; i++) {
+                option(value="#{i}") #{i}
+            - }
+        select(name="desiredDurationScale", id="register-desired-duration-scale")
+            option(value="days") Days
+            option(value="weeks") Weeks
+            option(value="months", selected="selected") Months
+            option(value="years") Years
         br
         input(type="submit", id="register-submit", class="submit-button", value="Register")

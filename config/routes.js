@@ -5,7 +5,6 @@ module.exports = function(app) {
     res.render('index', {
       subtitle: 'Making Internships Easier'
     });
-    console.log(res);
   });
 
   // User routes
