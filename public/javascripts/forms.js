@@ -1,14 +1,32 @@
 $(function() {
 
   /*
-   *  Register form
+   * Register Page
    */
-  $('#register-day-of-birth, #register-month-of-birth, #register-year-of-birth').change(function() {
-    $('#register-date-of-birth').val(
-      $('#register-year-of-birth').val() +
-      $('#register-month-of-birth').val() +
-      $('#register-day-of-birth').val()
-    );
+  if (!$('#register .required').val()) {
+    $(this).addClass('input-empty');
+    $('#register-submit').attr('disabled', 'disabled');
+  } else {
+    $(this).removeClass('input-empty');
+    $('#register-submit').removeAttr('disabled');
+  }
+
+  $('#register input, #register select, #register textarea').focus(function() {
+    if (!$('#register .required').val()) {
+      $(this).addClass('input-empty');
+      $('#register-submit').attr('disabled', 'disabled');
+    } else {
+      $(this).removeClass('input-empty');
+      $('#register-submit').removeAttr('disabled');
+    }
+  }).blur(function() {
+    if (!$('#register .required').val()) {
+      $(this).addClass('input-empty');
+      $('#register-submit').attr('disabled', 'disabled');
+    } else {
+      $(this).removeClass('input-empty');
+      $('#register-submit').removeAttr('disabled');
+    }
   });
 
 });

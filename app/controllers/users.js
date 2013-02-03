@@ -1,6 +1,7 @@
 var mongoose        = require('mongoose'),
     User            = require('../models/user'),
-    requestHelpers  = require('../../config/middlewares/requestHelpers');
+    requestHelpers  = require('../../config/middlewares/requestHelpers'),
+    sidebarData     = require('../../config/middlewares/sidebarData');
 
 exports.logIn = function(req, res) {
 
@@ -24,11 +25,15 @@ exports.register = function(req, res) {
     "Galway-Mayo Institute of Technology",
     "Waterford Institute of Technology",
     "National College of Ireland",
-    "Not Applicable"].sort();
+    "Not Applicable"
+  ].sort();
 
-  res.render('register', {
-    subtitle: "User Registration",
-    colleges: colleges
+  sidebarData.getDefaultSidebar(function(err, jobseekers) {
+    res.render('register', {
+      subtitle: 'User Registration',
+      colleges: colleges,
+      jobseekers: jobseekers
+    });
   });
 };
 
@@ -48,13 +53,14 @@ exports.create = function(req, res, next) {
     if (user) {
       return res.send('Conflict', 409);
     }
-    req.body = requestHelpers.modifyRegister(req.body);
+    req.body = requestHelpers.modifyRegister(req.body, req.files);
+
     User.create(req.body, function(err) {
       if (err) {
         return next(err);
       }
       res.set('previous-operation', 'register-success');
-      res.redirect('/', 302);
+      res.redirect('/?register=success', 302);
     });
   });
 };

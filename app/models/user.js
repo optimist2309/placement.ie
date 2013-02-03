@@ -10,6 +10,7 @@ var UserSchema = new Schema({
   username: {type: String, unique: true},
   email: String,
   password: String,
+  photo: String,
   forename: String,
   surname: String,
   dateOfBirth: String,
@@ -34,7 +35,8 @@ var UserSchema = new Schema({
     jobTo: Number
   }],
   roleSeeking: String,
-  desiredDuration: Number
+  desiredDuration: Number,
+  joinDate: {type: Date, default: Date.now}
 });
 
 var User = mongoose.model('User', UserSchema);

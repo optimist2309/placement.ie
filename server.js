@@ -47,7 +47,7 @@ app.configure(function() {
   app.use(viewHelpers(config));
 
   // Parse request body and allow use of PUT and DELETE.
-  app.use(express.bodyParser());
+  app.use(express.bodyParser({uploadDir: './uploads'}));
   app.use(express.methodOverride());
 
   // Parse cookies.

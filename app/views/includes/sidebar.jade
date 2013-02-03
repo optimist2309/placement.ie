@@ -17,11 +17,14 @@ section.sidebar
       h2 Jobseekers
     - for (i = 0; i < 2; i++) {
       div.sidebar-section-item
-        a.sidebar-section-item-photo.candidate-photo(href="#")
+        a.sidebar-section-item-photo.candidate-photo(href="/users/#{jobseekers[i].username}")
+          - if (jobseekers[i].photo) {
+            img(src="#{jobseekers[i].photo}", alt="#{jobseekers[i].username}")
+          - }
         div.sidebar-section-item-text.candidate-text
           h4.sidebar-section-item-title.candidate-name
-            a(href="#") Joe Bloggs
-          p.meta-data Seeking Role: Web Developer
+            a(href="/users/#{jobseekers[i].username}") #{jobseekers[i].forename} #{jobseekers[i].surname}
+          p.meta-data Seeking Role: #{jobseekers[i].roleSeeking}
           p.description Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         div.clear
     - }

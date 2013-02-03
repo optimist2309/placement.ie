@@ -359,6 +359,10 @@ h1.logo span.ie {
   background: #bbb;
   border: 1px solid #999;
 }
+.sidebar .sidebar-section .sidebar-section-item a.sidebar-section-item-photo img {
+  width: 75px;
+  height: 75px;
+}
 .sidebar .sidebar-section .sidebar-section-item .sidebar-section-item-text {
   float: right;
   width: 215px;
@@ -423,4 +427,16 @@ h3.form-heading:first-child {
   border: 1px solid #999;
   color: #202020;
   text-decoration: none;
+}
+/*
+ * Messages
+ */
+p.message-green {
+  background: #c9ffd0;
+  padding: 4px;
+  margin: 20px 0;
+  border-radius: 4px;
+  border: 1px solid #96e39f;
+  color: #47ad53;
+  text-align: center;
 }

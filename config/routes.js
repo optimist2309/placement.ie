@@ -1,14 +1,13 @@
+var users = require('../app/controllers/users'),
+    home  = require('../app/controllers/home');
+
 module.exports = function(app) {
 
-  // Home route
-  app.get('/', function(req, res) {
-    res.render('index', {
-      subtitle: 'Making Internships Easier'
-    });
-  });
+  // Home routes
+  app.get('/', home.show);
+  app.get('/?register=success', home.show);
 
   // User routes
-  var users = require('../app/controllers/users');
   app.get('/users/login', users.logIn);
   app.get('/users/new', users.register);
   app.get('/users/logout', users.logOut);

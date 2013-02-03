@@ -5,31 +5,34 @@ block content
     div.section-title
       h2 Register
     div.main-content-padded
-      form#register.form-display(action="/users/new", method="POST")
+      form#register.form-display(action="/users/new", method="POST", enctype="multipart/form-data")
         h3.form-heading Account Details
         hr
         label(for="username") Username:
-        input(type="text", name="username", id="register-username", value="")
+        input(type="text", name="username", id="register-username", class="required", value="")
         br
         label(for="email") Email:
-        input(type="text", name="email", id="register-email", value="")
+        input(type="text", name="email", id="register-email", class="required", value="")
         br
         label Confirm Email:
-        input(type="text", id="register-confirm-email", value="")
+        input(type="text", id="register-confirm-email", class="required", value="")
         br
         label(for="password") Password:
-        input(type="password", name="password", id="register-password", value="")
+        input(type="password", name="password", id="register-password", class="required", value="")
         br
         label Confirm Password:
-        input(type="password", id="register-confirm-password", value="")
+        input(type="password", id="register-confirm-password", class="required", value="")
+        br
+        label(for="photo") Profile Photo:
+        input(type="file", name="photo", id="register-photo")
 
         h3.form-heading About You
         hr
         label(for="forename") First Name:
-        input(type="text", name="forename", id="register-forename", value="")
+        input(type="text", name="forename", id="register-forename", class="required", value="")
         br
         label(for="surname") Surname:
-        input(type="text", name="surname", id="register-surname", value="")
+        input(type="text", name="surname", id="register-surname", class="required", value="")
         br
         label Date of Birth:
         select(name="dayOfBirth", id="register-day-of-birth")
@@ -57,7 +60,7 @@ block content
         label(for="townCity") Town / City:
         input(type="text", name="townCity", id="register-town-city", value="")
         br
-        label(for="county") County:
+        label(for="county", class="required") County:
         input(type="text", name="county", id="register-county", value="")
         br
         label(for="phone") Phone Number:
@@ -142,7 +145,7 @@ block content
 
         h3.form-heading Looking for
         hr
-        label(for="roleSeeking") Position Seeking:
+        label(for="roleSeeking", class="required") Position Seeking:
         input(type="text", name="roleSeeking", id="register-role-seeking", value="")
         br
         label(for="desiredDuration") Desired Duration:

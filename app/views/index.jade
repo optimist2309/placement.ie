@@ -1,6 +1,11 @@
 extends layout
 
 block content
+  - if (messageType == 1) {
+    p.message-green #{message}
+  - } else if (messageType == 2) {
+    p.message-red #{message}
+  - }
   section.main-content.homepage-main-content
     div.section-title
       h2 Featured Jobs
