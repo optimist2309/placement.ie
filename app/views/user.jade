@@ -3,7 +3,53 @@ extends layout
 block content
   section.main-content.user-main-content
     div.section-title
-      h2 Hello #{username}
+      h2 #{user.forename} #{user.surname}
     div.main-content-padded
-      p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin laoreet feugiat sapien a interdum. Cras et magna sit amet lectus auctor luctus. Donec consequat diam nec nibh iaculis pulvinar. Sed id ipsum nibh, aliquam facilisis dui. Etiam bibendum aliquam ligula placerat sollicitudin. Nam at ligula tortor, id malesuada enim. Mauris consequat dapibus mauris ac ornare. Suspendisse tristique rutrum augue sed tempor. Nam in blandit enim. Ut ut lorem nunc. Sed tortor nisl, tempus nec interdum ut, interdum et diam. Suspendisse euismod accumsan iaculis. Morbi ut erat vel mi laoreet consectetur id vel ipsum. Donec id purus est, ac adipiscing tellus. Donec porta iaculis sapien sit amet elementum.
-      p Donec eget nulla eros, mollis mollis dui. Donec eu leo nec lorem tincidunt accumsan eu at tortor. Etiam in nulla ac odio tincidunt hendrerit. Nam non velit consequat est fermentum pharetra. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec suscipit placerat ultricies. Nam viverra, eros quis tempor sollicitudin, ipsum augue tincidunt augue, et laoreet justo enim quis mauris.
+      - if (user.photo)
+        img(src="#{user.photo}", alt="#{user.username}", class="user-profile-photo")
+      - else
+        img(src="images/no-photo.png", alt="#{user.username}")
+      table.user-profile-main
+        - var mainInfo = [user.forename + " " + user.surname, user.dateOfBirth, user.county, user.roleSeeking, user.desiredDuration]
+        - var mainInfoLabels = ["Name", "Date Of Birth", "Living In", "Position Seeking", "Duration"]
+        each item, i in mainInfo
+          tr
+            td #{mainInfoLabels[i]}:
+            td= item
+      div.clear
+
+      h3.info-heading Education
+      hr
+      table.user-profile-table.user-profile-education
+        - var collegeInfo = [user.college, user.collegeCourse, user.collegeFrom + " - " + user.collegeTo]
+        - var collegeInfoLabels = ["College", "Course Title", "Years Attended"]
+        each item, i in collegeInfo
+          - if (item)
+            tr
+              td #{collegeInfoLabels[i]}:
+              td= item
+        tr
+          td &nbsp;
+          td
+
+        - var leavingCert = (user.leavingCert == true) ? "Completed" : "Not Completed"
+        - var schoolInfo = [user.school, leavingCert, user.schoolFrom + " - " + user.schoolTo]
+        - var schoolInfoLabels = ["High School", "Leaving Certificate", "Years Attended"]
+        each item, i in schoolInfo
+          - if (item)
+            tr
+              td.first-td #{schoolInfoLabels[i]}:
+              td= item
+
+      h3.info-heading Work Experience
+      hr
+      - if (user.job)
+        table.user-profile-table.user-profile-experience
+          each job in user.job
+            - var jobInfo = [job.employer, job.jobTitle, job.jobDesc, job.jobFrom + " - " + job.jobTo]
+            - var jobInfoLabels = ["Employer", "Position", "Description", "Years Employed"]
+            each item, i in jobInfo
+              - if (item)
+                tr
+                  td.first-td #{jobInfoLabels[i]}:
+                  td= item

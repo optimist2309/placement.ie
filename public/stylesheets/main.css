@@ -319,6 +319,43 @@ h1.logo span.ie {
   margin: 0;
 }
 /*
+ * Profile Pages
+ */
+.user-profile-photo {
+  width: 150px;
+  height: 150px;
+  float: left;
+  border: 1px solid #aaa;
+}
+table.user-profile-main {
+  width: 398px;
+  height: 152px;
+  float: right;
+}
+table.user-profile-main tr:nth-child(odd) {
+  background: #ddd;
+}
+table.user-profile-main td {
+  padding: 10px 10px 7px;
+}
+h3.info-heading {
+  font-size: 150%;
+  margin-top: 28pt;
+}
+table.user-profile-table {
+  width: 550px;
+}
+table.user-profile-table tr:nth-child(odd) {
+  background: #ddd;
+}
+table.user-profile-table td {
+  padding: 7px;
+  line-height: 14pt;
+}
+table.user-profile-table td.first-td {
+  width: 200px;
+}
+/*
  * Sidebar
  */
 .sidebar {
@@ -408,6 +445,12 @@ h3.form-heading:first-child {
   background-color: #2867b0;
   border: 1px solid #1c4a80;
 }
+.submit-button.submit-disabled {
+  background-color: #ccc;
+  border: 1px solid #999;
+  text-shadow: 1px 1px 1px #999;
+  cursor: default;
+}
 #register-college {
   width: 186px;
 }
@@ -427,6 +470,14 @@ h3.form-heading:first-child {
   border: 1px solid #999;
   color: #202020;
   text-decoration: none;
+}
+.input-empty {
+  box-shadow: 0 0 1px 1px #f00;
+}
+#register-password-hint {
+  color: #ed0202;
+  margin-left: 10px;
+  font-style: italic;
 }
 /*
  * Messages

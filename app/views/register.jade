@@ -22,6 +22,7 @@ block content
         br
         label Confirm Password:
         input(type="password", id="register-confirm-password", class="required", value="")
+        span(id="register-password-hint") Passwords do not match
         br
         label(for="photo") Profile Photo:
         input(type="file", name="photo", id="register-photo")
@@ -36,20 +37,18 @@ block content
         br
         label Date of Birth:
         select(name="dayOfBirth", id="register-day-of-birth")
-            - for (i = 1; i < 32; i++) {
-                option(value="#{i}") #{i}
-            - }
+          - for (i = 1; i < 32; i++)
+            option(value="#{i}") #{i}
         select(name="monthOfBirth", id="register-month-of-birth")
-            months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-            each month, i in months
-                option(value="#{i+1}") #{month}
+          months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+          each month, i in months
+            option(value="#{i+1}") #{month}
         select(name="yearOfBirth", id="register-year-of-birth")
-            - for (i = 1920; i < 2000; i++) {
-                - if (i === 1990)
-                    option(value="#{i}", selected="selected") #{i}
-                - else
-                    option(value="#{i}") #{i}
-            - }
+          - for (i = 1920; i < 2000; i++)
+            - if (i === 1990)
+              option(value="#{i}", selected="selected") #{i}
+            - else
+              option(value="#{i}") #{i}
         br
         label(for="addressLine1") Address Line 1:
         input(type="text", name="addressLine1", id="register-address-line-1", value="")
@@ -60,8 +59,8 @@ block content
         label(for="townCity") Town / City:
         input(type="text", name="townCity", id="register-town-city", value="")
         br
-        label(for="county", class="required") County:
-        input(type="text", name="county", id="register-county", value="")
+        label(for="county") County:
+        input(type="text", name="county", id="register-county", class="required", value="")
         br
         label(for="phone") Phone Number:
         input(type="text", name="phone", id="register-phone", value="")
@@ -70,27 +69,25 @@ block content
         hr
         label(for="college") College Name:
         select(name="college", id="register-college")
-            each college in colleges
-                option(value="#{college}") #{college}
+          each college in colleges
+            option(value="#{college}") #{college}
         br
         label(for="collegeCourse") Course Title:
         input(type="text", name="collegeCourse", id="register-course", value="")
         br
         label From / To:
         select(name="collegeFrom", id="register-college-from")
-            - for (i = 1950; i < 2014; i++) {
-                - if (i === 2010)
-                    option(value="#{i}", selected="selected") #{i}
-                - else
-                    option(value="#{i}") #{i}
-            - }
+          - for (i = 1950; i < 2014; i++)
+            - if (i === 2010)
+              option(value="#{i}", selected="selected") #{i}
+            - else
+              option(value="#{i}") #{i}
         select(name="collegeTo", id="register-college-to")
-            - for (i = 1950; i < 2014; i++) {
-                - if (i === 2013)
-                    option(value="#{i}", selected="selected") Present
-                - else
-                    option(value="#{i}") #{i}
-            - }
+          - for (i = 1950; i < 2014; i++)
+            - if (i === 2013)
+              option(value="#{i}", selected="selected") Present
+            - else
+              option(value="#{i}") #{i}
         br
         label(for="school") Secondary School:
         input(type="text", name="school", id="register-school", value="")
@@ -100,19 +97,17 @@ block content
         br
         label From / To:
         select(name="schoolFrom", id="register-school-from")
-            - for (i = 1950; i < 2014; i++) {
-                - if (i === 2005)
-                    option(value="#{i}", selected="selected") #{i}
-                - else
-                    option(value="#{i}") #{i}
-            - }
+          - for (i = 1950; i < 2014; i++)
+            - if (i === 2005)
+              option(value="#{i}", selected="selected") #{i}
+            - else
+              option(value="#{i}") #{i}
         select(name="schoolTo", id="register-school-to")
-            - for (i = 1950; i < 2014; i++) {
-                - if (i === 2013)
-                    option(value="#{i}", selected="selected") Present
-                - else
-                    option(value="#{i}") #{i}
-            - }
+          - for (i = 1950; i < 2014; i++)
+            - if (i === 2013)
+              option(value="#{i}", selected="selected") Present
+            - else
+              option(value="#{i}") #{i}
 
         h3.form-heading Work Experience
         hr
@@ -127,28 +122,26 @@ block content
         br
         label From / To:
         select(name="job[0][jobFrom]", id="register-employer-1-from")
-            - for (i = 1950; i < 2014; i++) {
-                - if (i === 2009)
-                    option(value="#{i}", selected="selected") #{i}
-                - else
-                    option(value="#{i}") #{i}
-            - }
+          - for (i = 1950; i < 2014; i++)
+            - if (i === 2009)
+              option(value="#{i}", selected="selected") #{i}
+            - else
+              option(value="#{i}") #{i}
         select(name="job[0][jobTo]", id="register-employer-1-to")
-            - for (i = 1950; i < 2014; i++) {
-                - if (i === 2013)
-                    option(value="#{i}", selected="selected") Present
-                - else
-                    option(value="#{i}") #{i}
-            - }
+          - for (i = 1950; i < 2014; i++)
+            - if (i === 2013)
+              option(value="#{i}", selected="selected") Present
+            - else
+              option(value="#{i}") #{i}
         br
         a(href="#", id="register-add-another-job") Add Another +
 
         h3.form-heading Looking for
         hr
-        label(for="roleSeeking", class="required") Position Seeking:
-        input(type="text", name="roleSeeking", id="register-role-seeking", value="")
+        label(for="roleSeeking") Position Seeking:
+        input(type="text", name="roleSeeking", id="register-role-seeking", class="required", value="")
         br
-        label(for="desiredDuration") Desired Duration:
+        label() Desired Duration:
         select(name="desiredDurationNumber", id="register-desired-duration-number")
             - for (i = 1; i < 13; i++) {
                 option(value="#{i}") #{i}

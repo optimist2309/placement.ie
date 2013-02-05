@@ -1,11 +1,12 @@
 var mongoose        = require('mongoose'),
     User            = require('../models/user'),
     requestHelpers  = require('../../config/middlewares/requestHelpers'),
-    sidebarData     = require('../../config/middlewares/sidebarData');
+    sidebarData     = require('../../config/middlewares/sidebarData'),
+    easydates       = require('easydates')
 
 exports.logIn = function(req, res) {
 
-};
+}
 
 exports.register = function(req, res) {
   var colleges = [
@@ -26,56 +27,64 @@ exports.register = function(req, res) {
     "Waterford Institute of Technology",
     "National College of Ireland",
     "Not Applicable"
-  ].sort();
+  ].sort()
 
   sidebarData.getDefaultSidebar(function(err, jobseekers) {
     res.render('register', {
       subtitle: 'User Registration',
       colleges: colleges,
       jobseekers: jobseekers
-    });
-  });
-};
+    })
+  })
+}
 
 exports.logOut = function(req, res) {
 
-};
+}
 
 exports.session = function(req, res) {
 
-};
+}
 
 exports.create = function(req, res, next) {
   User.findOne({username: req.params.username}, function(err, user) {
     if (err) {
-      return next(err);
+      return next(err)
     }
     if (user) {
-      return res.send('Conflict', 409);
+      return res.send('Conflict', 409)
     }
-    req.body = requestHelpers.modifyRegister(req.body, req.files);
+    req.body = requestHelpers.modifyRegister(req.body, req.files)
 
     User.create(req.body, function(err) {
       if (err) {
-        return next(err);
+        return next(err)
       }
-      res.set('previous-operation', 'register-success');
-      res.redirect('/?register=success', 302);
-    });
-  });
-};
+      res.set('previous-operation', 'register-success')
+      res.redirect('/?register=success', 302)
+    })
+  })
+}
 
 exports.update = function(req, res) {
-  res.end('Implement functionality to update a user.');
-};
+  res.end('Implement functionality to update a user.')
+}
 
 exports.remove = function(req, res) {
-  res.end('Implement functionality to delete a user.');
-};
+  res.end('Implement functionality to delete a user.')
+}
 
 exports.show = function(req, res) {
-  res.render('user', {
-    subtitle: req.params.username + "'s Profile",
-    username: req.params.username
-  });
-};
+  User.findOne({username: req.params.username}, function(err, user) {
+    user.dateOfBirth = easydates.dateFromDateStamp(user.dateOfBirth)
+
+    sidebarData.getDefaultSidebar(function(err, jobseekers) {
+      res.render('user', {
+        subtitle: user.forename + '\'s Profile',
+        user: user,
+        jobseekers: jobseekers
+      })
+    })
+
+  })
+}

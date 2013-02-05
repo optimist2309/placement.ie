@@ -4,7 +4,7 @@
 
 // Dependencies
 var mongoose  = require('mongoose'),
-    Schema    = mongoose.Schema;
+    Schema    = mongoose.Schema
 
 var UserSchema = new Schema({
   username: {type: String, unique: true},
@@ -35,10 +35,10 @@ var UserSchema = new Schema({
     jobTo: Number
   }],
   roleSeeking: String,
-  desiredDuration: Number,
+  desiredDuration: String,
   joinDate: {type: Date, default: Date.now}
-});
+})
 
-var User = mongoose.model('User', UserSchema);
+var User = mongoose.model('User', UserSchema)
 
-module.exports = User;
+module.exports = User

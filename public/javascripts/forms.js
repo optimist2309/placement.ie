@@ -3,30 +3,33 @@ $(function() {
   /*
    * Register Page
    */
-  if (!$('#register .required').val()) {
-    $(this).addClass('input-empty');
-    $('#register-submit').attr('disabled', 'disabled');
-  } else {
-    $(this).removeClass('input-empty');
-    $('#register-submit').removeAttr('disabled');
+  function requiredEmpty() {
+    var oneIsEmpty = false;
+    $('.required').each(function() {
+      if (!$(this).val()) {
+        $(this).addClass('input-empty');
+        oneIsEmpty = true;
+      } else {
+        $(this).removeClass('input-empty');
+      }
+    });
+    if (oneIsEmpty == true) {
+      $('#register-submit').attr('disabled', 'disabled').addClass('submit-disabled');
+    } else {
+      $('#register-submit').removeAttr('disabled').removeClass('submit-disabled');
+    }
   }
+  requiredEmpty();
+  $('#register input, #register textarea, #register select').focus(requiredEmpty).blur(requiredEmpty);
 
-  $('#register input, #register select, #register textarea').focus(function() {
-    if (!$('#register .required').val()) {
-      $(this).addClass('input-empty');
-      $('#register-submit').attr('disabled', 'disabled');
+  function passwordMatch() {
+    if ($('#register-password').val() != $('#register-confirm-password').val()) {
+      $('#register-password-hint').stop(true, true).fadeIn(500);
     } else {
-      $(this).removeClass('input-empty');
-      $('#register-submit').removeAttr('disabled');
+      $('#register-password-hint').stop(true, true).fadeOut(500);
     }
-  }).blur(function() {
-    if (!$('#register .required').val()) {
-      $(this).addClass('input-empty');
-      $('#register-submit').attr('disabled', 'disabled');
-    } else {
-      $(this).removeClass('input-empty');
-      $('#register-submit').removeAttr('disabled');
-    }
-  });
+  }
+  passwordMatch();
+  $('#register-password, #register-confirm-password').focus(passwordMatch).blur(passwordMatch);
 
 });

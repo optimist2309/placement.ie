@@ -291,6 +291,39 @@ h1.logo span.ie
 
 
 /*
+ * Profile Pages
+ */
+.user-profile-photo
+  width 150px
+  height 150px
+  float left
+  border 1px solid #AAAAAA
+
+table.user-profile-main
+  width 398px
+  height 152px
+  float right
+  & tr:nth-child(odd)
+    background #DDDDDD
+  & td
+    padding 10px 10px 7px
+
+h3.info-heading
+  font-size 150%
+  margin-top 28pt
+
+table.user-profile-table
+  width 550px
+  & tr:nth-child(odd)
+    background #DDDDDD
+  & td
+    padding 7px
+    line-height 14pt
+    &.first-td
+      width 200px
+
+
+/*
  * Sidebar
  */
 .sidebar
@@ -366,6 +399,11 @@ h3.form-heading
   &:hover
     background-color #2867B0
     border 1px solid #1C4A80
+  &.submit-disabled
+    background-color #CCCCCC
+    border 1px solid #999999
+    text-shadow 1px 1px 1px #999999
+    cursor default
 
 #register-college
   width 186px
@@ -385,6 +423,14 @@ h3.form-heading
     border 1px solid #999999
     color #202020
     text-decoration none
+
+.input-empty
+  box-shadow 0 0 1px 1px #FF0000
+
+#register-password-hint
+  color #ED0202
+  margin-left 10px
+  font-style italic
 
 /*
  * Messages
