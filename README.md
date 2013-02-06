@@ -8,6 +8,8 @@ For my final year project, I have decided to build a web application based on RE
 and powered by Node.js. The application is a simple job hunting site tailored for students
 looking for internships.
 
+- - -
+
 ##### Technologies Used
 
 The following is a list of languages and technologies used:
@@ -17,12 +19,16 @@ The following is a list of languages and technologies used:
 * MongoDB (Database)
 * Mocha (Testing)
 
+- - -
+
 ##### Next Build
 
 The following features are planned for the next build:
 * Update user profile
 * Delete user profile
 * Allow adding of multiple past jobs
+
+- - -
 
 ##### Bugs
 
