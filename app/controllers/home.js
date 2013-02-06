@@ -11,12 +11,18 @@ exports.show = function(req, res) {
     messageType = 2
   }
 
+  var user = null
+  if (req.session.user) {
+    user = req.session.user
+  }
+
   sidebarData.getDefaultSidebar(function(err, jobseekers) {
     res.render('index', {
       subtitle: 'Making Internships Easier',
       jobseekers: jobseekers,
       message: message,
-      messageType: messageType
+      messageType: messageType,
+      user: user
     })
   })
 }

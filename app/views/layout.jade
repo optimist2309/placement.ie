@@ -9,7 +9,12 @@ html
     script(src="/javascripts/forms.js")
   body
     section.wrapper
-      include includes/header
-      block content
-      include includes/sidebar
+      - if (user)
+        include includes/header-logged-in
+        block content
+        include includes/sidebar-logged-in
+      - else
+        include includes/header
+        block content
+        include includes/sidebar
       include includes/footer

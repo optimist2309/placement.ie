@@ -18,3 +18,9 @@ exports.saltAndHash = function(password, callback) {
   var salt = generateSalt()
   callback(salt + md5(password + salt))
 }
+
+exports.validatePassword = function(plain, hashed, callback) {
+  var salt = hashed.substr(0, 10)
+  var valid = salt + md5(plain + salt)
+  callback(null, hashed === valid)
+}
