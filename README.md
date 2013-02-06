@@ -1,11 +1,32 @@
-placement.ie
-============
+# placement.ie - Node.js Web Application
 
-Final Year Project using Node.js
---------------------------------
+---
 
-This is my final year project for college, a web application built using Node.js to help students find work-placement/internships.
+### Final Year Project w/ Thesis
 
-Since my development is all local at the moment, I am keeping the code version-controlled in a public repository. However, if I decided to publish the website when I'm finished, I'll be upgrading my account and keeping it in a private repository.
+For my final year project, I have decided to build a web application based on RESTful principles
+and powered by Node.js. The application is a simple job hunting site tailored for students
+looking for internships.
 
-For the moment, feel free to use any of the code for your own uses.
+##### Technologies Used
+
+The following is a list of languages and technologies used:
+* JavaScript (Node.js & jQuery)
+* HTML5
+* CSS3
+* MongoDB (Database)
+* Mocha (Testing)
+
+##### Next Build
+
+The following features are planned for the next build:
+* Update user profile
+* Delete user profile
+* Allow adding of multiple past jobs
+
+##### Bugs
+
+The current bugs are being tracked:
+* User dashboard is being shown on user page (conflict of variable names)
+* Jobs section of user page is showing for users with no experience
+* Selecting "present" as a year still comes up as 2013
