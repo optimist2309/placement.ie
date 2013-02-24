@@ -24,15 +24,16 @@ The following is a list of languages and technologies used:
 ##### Next Build
 
 The following features are planned for the next build:
-* Update user profile
-* Delete user profile
-* Allow adding of multiple past jobs
+* Register company
+* Show company profile
+* Update company
+* Delete company
+* More detailed error messages
 
 - - -
 
 ##### Bugs
 
 The current bugs are being tracked:
-* User dashboard is being shown on user page (conflict of variable names)
 * Jobs section of user page is showing for users with no experience
 * Selecting "present" as a year still comes up as 2013
