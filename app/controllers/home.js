@@ -9,6 +9,18 @@ exports.show = function(req, res) {
   } else if (req.query.register == "failed") {
     message = "We're sorry, there was a problem with your registration."
     messageType = 2
+  } else if (req.query.update == "success") {
+    message = "Congratulations! You have successfully updated your profile."
+    messageType = 1
+  } else if (req.query.update == "failed") {
+    message = "We're sorry, there was a problem updating your profile."
+    messageType = 2
+  } else if (req.query.remove == "success") {
+    message = "You have successfully deleted your profile"
+    messageType = 1
+  } else if (req.query.remove == "failed") {
+    message = "We're sorry, there was a problem removing that profile"
+    messageType = 2
   }
 
   var user = null

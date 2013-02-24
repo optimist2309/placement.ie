@@ -70,6 +70,7 @@ textarea {
   border-radius: 4px;
   color: #606060;
   font-family: Droid Sans;
+  font-size: 10pt;
 }
 input[type="checkbox"] {
   margin: 8px 0;
@@ -475,6 +476,9 @@ h3.form-heading:first-child {
   text-shadow: 1px 1px 1px #999;
   cursor: default;
 }
+#register-photo {
+  margin-top: 4px;
+}
 #register-college {
   width: 186px;
 }
@@ -502,6 +506,13 @@ h3.form-heading:first-child {
   color: #ed0202;
   margin-left: 10px;
   font-style: italic;
+}
+a.remove-user {
+  margin-left: 20px;
+  color: #d22;
+}
+#remove-submit {
+  margin: 0;
 }
 /*
  * Messages

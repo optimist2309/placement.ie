@@ -20,7 +20,7 @@ $(function() {
     }
   }
   requiredEmpty();
-  $('#register input, #register textarea, #register select').focus(requiredEmpty).blur(requiredEmpty);
+  $('#register input, #register textarea, #register select, #update-user input, #update-user textarea, #update-user select').focus(requiredEmpty).blur(requiredEmpty);
 
   function passwordMatch() {
     if ($('#register-password').val() != $('#register-confirm-password').val()) {

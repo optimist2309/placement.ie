@@ -12,9 +12,10 @@ module.exports = function(app) {
   app.get('/users/new', users.register)
   app.get('/users/logout', users.logOut)
   app.get('/users/:username', users.show)
+  app.get('/users/:username/edit', users.edit)
+  app.get('/users/:username/remove', users.remove)
   app.post('/users/new', users.create)
-  app.post('/users/:username/session', users.session)
   app.put('/users/:username', users.update)
-  app.del('/users/:username', users.remove)
+  app.del('/users/:username', users.delete)
 
 }

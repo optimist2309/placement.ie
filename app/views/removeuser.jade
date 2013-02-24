@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  section.main-content.remove-user-main-content
+    div.section-title
+      h2 Remove Account
+    div.main-content-padded
+      form#remove-user.form-display(action="/users/#{user.username}", method="POST", enctype="multipart/form-data")
+        input(type="hidden", name="_method", value="DELETE")
+        h3.form-heading Are you sure?
+        hr
+        p If you are sure you want to delete your profile, click the button below.
+        input(type="submit", id="remove-submit", class="submit-button", value="Delete Profile")

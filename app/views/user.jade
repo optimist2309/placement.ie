@@ -3,14 +3,14 @@ extends layout
 block content
   section.main-content.user-main-content
     div.section-title
-      h2 #{user.forename} #{user.surname}
+      h2 #{profile.forename} #{profile.surname}
     div.main-content-padded
-      - if (user.photo)
-        img(src="#{user.photo}", alt="#{user.username}", class="user-profile-photo")
+      - if (profile.photo)
+        img(src="#{profile.photo}", alt="#{profile.username}", class="user-profile-photo")
       - else
-        img(src="images/no-photo.png", alt="#{user.username}")
+        img(src="images/no-photo.png", alt="#{profile.username}")
       table.user-profile-main
-        - var mainInfo = [user.forename + " " + user.surname, user.dateOfBirth, user.county, user.roleSeeking, user.desiredDuration]
+        - var mainInfo = [profile.forename + " " + profile.surname, profile.dateOfBirth, profile.county, profile.roleSeeking, profile.desiredDuration]
         - var mainInfoLabels = ["Name", "Date Of Birth", "Living In", "Position Seeking", "Duration"]
         each item, i in mainInfo
           tr
@@ -21,7 +21,7 @@ block content
       h3.info-heading Education
       hr
       table.user-profile-table.user-profile-education
-        - var collegeInfo = [user.college, user.collegeCourse, user.collegeFrom + " - " + user.collegeTo]
+        - var collegeInfo = [profile.college, profile.collegeCourse, profile.collegeFrom + " - " + profile.collegeTo]
         - var collegeInfoLabels = ["College", "Course Title", "Years Attended"]
         each item, i in collegeInfo
           - if (item)
@@ -32,8 +32,8 @@ block content
           td &nbsp;
           td
 
-        - var leavingCert = (user.leavingCert == true) ? "Completed" : "Not Completed"
-        - var schoolInfo = [user.school, leavingCert, user.schoolFrom + " - " + user.schoolTo]
+        - var leavingCert = (profile.leavingCert == true) ? "Completed" : "Not Completed"
+        - var schoolInfo = [profile.school, leavingCert, profile.schoolFrom + " - " + profile.schoolTo]
         - var schoolInfoLabels = ["High School", "Leaving Certificate", "Years Attended"]
         each item, i in schoolInfo
           - if (item)
@@ -43,9 +43,9 @@ block content
 
       h3.info-heading Work Experience
       hr
-      - if (user.job)
+      - if (profile.job)
         table.user-profile-table.user-profile-experience
-          each job in user.job
+          each job in profile.job
             - var jobInfo = [job.employer, job.jobTitle, job.jobDesc, job.jobFrom + " - " + job.jobTo]
             - var jobInfoLabels = ["Employer", "Position", "Description", "Years Employed"]
             each item, i in jobInfo

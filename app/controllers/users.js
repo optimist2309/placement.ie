@@ -45,11 +45,17 @@ exports.register = function(req, res) {
     "Not Applicable"
   ].sort()
 
+  var user = null
+  if (req.session.user) {
+    user = req.session.user
+  }
+
   sidebarData.getDefaultSidebar(function(err, jobseekers) {
     res.render('register', {
       subtitle: 'User Registration',
       colleges: colleges,
-      jobseekers: jobseekers
+      jobseekers: jobseekers,
+      user: user
     })
   })
 }
@@ -62,10 +68,6 @@ exports.logOut = function(req, res) {
       res.redirect('/')
     }
   })
-}
-
-exports.session = function(req, res) {
-
 }
 
 exports.create = function(req, res, next) {
@@ -87,23 +89,117 @@ exports.create = function(req, res, next) {
   })
 }
 
-exports.update = function(req, res) {
-  res.end('Implement functionality to update a user.')
+exports.edit = function(req, res) {
+  var colleges = [
+    "Athlone Institute of Technology",
+    "IT Tallaght",
+    "Bray Institute",
+    "Dublin City University",
+    "Dublin Institute of Technolgy",
+    "University College Dublin",
+    "Trinity College Dublin",
+    "NUI Galway",
+    "NUI Maynooth",
+    "University College Cork",
+    "IT Sligo",
+    "Cavan Institute",
+    "Royal College of Surgeons",
+    "Galway-Mayo Institute of Technology",
+    "Waterford Institute of Technology",
+    "National College of Ireland",
+    "Not Applicable"
+  ].sort()
+
+  if (req.session.user) {
+    var user = req.session.user
+
+    // Append some necessary attributes
+    user.dayOfBirth = user.dateOfBirth.substr(6, 2)
+    user.monthOfBirth = user.dateOfBirth.substr(4, 2)
+    user.yearOfBirth = user.dateOfBirth.substr(0, 4)
+    user.desiredDurationNumber = user.desiredDuration.split(" ")[0]
+    user.desiredDurationScale = user.desiredDuration.split(" ")[1]
+
+    sidebarData.getDefaultSidebar(function(err, jobseekers) {
+      res.render('edituser', {
+        subtitle: 'Edit ' + user.forename + '\'s Profile',
+        jobseekers: jobseekers,
+        colleges: colleges,
+        user: user
+      })
+    })
+  } else {
+    res.send('Not Found', 404)
+  }
+}
+
+exports.update = function(req, res, next) {
+  req.body = requestHelpers.modifyUpdate(req.body)
+  User.findOneAndUpdate({username: req.params.username}, {$set: req.body}, function(err, user) {
+    if (err) {
+      res.send('Conflict', 409)
+    }
+    if (user) {
+      req.session.user = user
+      res.redirect('/?update=success', 302)
+    }
+  })
 }
 
 exports.remove = function(req, res) {
-  res.end('Implement functionality to delete a user.')
+  var user = null
+  if (req.session.user) {
+    user = req.session.user
+  }
+
+  if (user) {
+    sidebarData.getDefaultSidebar(function(err, jobseekers) {
+      res.render('removeuser', {
+        subtitle: 'Sorry to see you go, ' + user.forename,
+        jobseekers: jobseekers,
+        user: user
+      })
+    })
+  }
+}
+
+exports.delete = function(req, res) {
+  var user = null
+  if (req.session.user) {
+    user = req.session.user
+  }
+
+  if (user.username == req.params.username) {
+    User.findOneAndRemove({username: req.params.username}, function(err, result) {
+      if (err) {
+        res.send('User not found', 400)
+      }
+      if (result) {
+        res.clearCookie('username')
+        res.clearCookie('password')
+        req.session.destroy(function(err) {
+          res.redirect('/?remove=success')
+        })
+      }
+    })
+  }
 }
 
 exports.show = function(req, res) {
-  User.findOne({username: req.params.username}, function(err, user) {
-    user.dateOfBirth = easydates.dateFromDateStamp(user.dateOfBirth)
+  User.findOne({username: req.params.username}, function(err, profile) {
+    profile.dateOfBirth = easydates.dateFromDateStamp(profile.dateOfBirth)
+
+    var user = null
+    if (req.session.user) {
+      user = req.session.user
+    }
 
     sidebarData.getDefaultSidebar(function(err, jobseekers) {
       res.render('user', {
-        subtitle: user.forename + '\'s Profile',
-        user: user, // Error here, need to rename!!!
-        jobseekers: jobseekers
+        subtitle: profile.forename + '\'s Profile',
+        profile: profile,
+        jobseekers: jobseekers,
+        user: user
       })
     })
 

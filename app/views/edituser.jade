@@ -1,8 +1,183 @@
 extends layout
 
 block content
-  section.main-content.register-main-content
+  section.main-content.update-user-main-content
     div.section-title
       h2 Register
     div.main-content-padded
-      form#update-user.form-display(action="/users/username", method="POST")
+      form#update-user.form-display(action="/users/#{user.username}", method="POST", enctype="multipart/form-data")
+        input(type="hidden", name="_method", value="PUT")
+        h3.form-heading Account Details
+        hr
+        label(for="username") Username:
+        input(type="text", name="username", id="register-username", class="required", value="#{user.username}", disabled="disabled")
+        br
+        label(for="email") Email:
+        input(type="text", name="email", id="register-email", class="required", value="#{user.email}")
+        br
+        label Confirm Email:
+        input(type="text", id="register-confirm-email", class="required", value="#{user.email}")
+        br
+        label(for="password") Password:
+        input(type="password", name="password", id="register-password", class="required", value="")
+        br
+        label Confirm Password:
+        input(type="password", id="register-confirm-password", class="required", value="")
+        span(id="register-password-hint") Passwords do not match
+
+        h3.form-heading About You
+        hr
+        label(for="forename") First Name:
+        input(type="text", name="forename", id="register-forename", class="required", value="#{user.forename}")
+        br
+        label(for="surname") Surname:
+        input(type="text", name="surname", id="register-surname", class="required", value="#{user.surname}")
+        br
+        label Date of Birth:
+        select(name="dayOfBirth", id="register-day-of-birth")
+          - for (i = 1; i < 32; i++)
+            - if (i == user.dayOfBirth)
+              option(value="#{i}", selected="selected") #{i}
+            - else
+              option(value="#{i}") #{i}
+        select(name="monthOfBirth", id="register-month-of-birth")
+          months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+          each month, i in months
+            - if ((i+1) == user.monthOfBirth)
+              option(value="#{i+1}", selected="selected") #{month}
+            - else
+              option(value="#{i+1}") #{month}
+        select(name="yearOfBirth", id="register-year-of-birth")
+          - for (i = 1920; i < 2000; i++)
+            - if (i == user.yearOfBirth)
+              option(value="#{i}", selected="selected") #{i}
+            - else
+              option(value="#{i}") #{i}
+        br
+        label(for="addressLine1") Address Line 1:
+        input(type="text", name="addressLine1", id="register-address-line-1", value="#{user.addressLine1}")
+        br
+        label(for="addressLine2") Address Line 2:
+        input(type="text", name="addressLine2", id="register-address-line-2", value="#{user.addressLine2}")
+        br
+        label(for="townCity") Town / City:
+        input(type="text", name="townCity", id="register-town-city", value="#{user.townCity}")
+        br
+        label(for="county") County:
+        input(type="text", name="county", id="register-county", class="required", value="#{user.county}")
+        br
+        label(for="phone") Phone Number:
+        input(type="text", name="phone", id="register-phone", value="#{user.phone}")
+
+        h3.form-heading Education
+        hr
+        label(for="college") College Name:
+        select(name="college", id="register-college")
+          each college in colleges
+            - if (college == user.college)
+              option(value="#{college}", selected="selected") #{college}
+            - else
+              option(value="#{college}") #{college}
+        br
+        label(for="collegeCourse") Course Title:
+        input(type="text", name="collegeCourse", id="register-course", value="#{user.collegeCourse}")
+        br
+        label From / To:
+        select(name="collegeFrom", id="register-college-from")
+          - for (i = 1950; i < 2014; i++)
+            - if (i == user.collegeFrom)
+              option(value="#{i}", selected="selected") #{i}
+            - else
+              option(value="#{i}") #{i}
+        select(name="collegeTo", id="register-college-to")
+          - for (i = 1950; i < 2014; i++)
+            - if (i == 2013 && i == user.collegeTo)
+              option(value="#{i}", selected="selected") Present
+            - else if (i == 2013)
+              option(value="#{i}") #{i}
+            - else if (i == user.collegeTo)
+              option(value="#{i}", selected="selected") #{i}
+            - else
+              option(value="#{i}") #{i}
+        br
+        label(for="school") Secondary School:
+        input(type="text", name="school", id="register-school", value="#{user.school}")
+        br
+        label(for="leavingCert") Leaving Certificate:
+        - if (user.leavingCert)
+          input(type="checkbox", name="leavingCert", id="completed-leaving-certificate", checked="checked")
+        - else
+          input(type="checkbox", name="leavingCert", id="completed-leaving-certificate")
+        br
+        label From / To:
+        select(name="schoolFrom", id="register-school-from")
+          - for (i = 1950; i < 2014; i++)
+            - if (i == user.schoolFrom)
+              option(value="#{i}", selected="selected") #{i}
+            - else
+              option(value="#{i}") #{i}
+        select(name="schoolTo", id="register-school-to")
+          - for (i = 1950; i < 2014; i++)
+            - if (i == 2013 && i == user.schoolTo)
+              option(value="#{i}", selected="selected") Present
+            - else if (i == 2013)
+              option(value="#{i}") Present
+            - else if (i == user.schoolTo)
+              option(value="#{i}", selected="selected") #{i}
+            - else
+              option(value="#{i}") #{i}
+
+        h3.form-heading Work Experience
+        hr
+        label(for="job[0][employer]") Employer:
+        input(type="text", name="job[0][employer]", id="register-employer-1", value="#{user.job[0].employer}")
+        br
+        label(for="job[0][jobTitle]") Job Title:
+        input(type="text", name="job[0][jobTitle]", id="register-employer-1-title", value="#{user.job[0].jobTitle}")
+        br
+        label(for="job[0][jobDesc]") Job Description:
+        textarea(name="job[0][jobDesc]", id="register-employer-1-description") #{user.job[0].jobDesc}
+        br
+        label From / To:
+        select(name="job[0][jobFrom]", id="register-employer-1-from")
+          - for (i = 1950; i < 2014; i++)
+            - if (i == user.job[0].jobFrom)
+              option(value="#{i}", selected="selected") #{i}
+            - else
+              option(value="#{i}") #{i}
+        select(name="job[0][jobTo]", id="register-employer-1-to")
+          - for (i = 1950; i < 2014; i++)
+            - if (i == 2013 && i == user.job[0].jobTo)
+              option(value="#{i}", selected="selected") Present
+            - else if (i == 2013)
+              option(value="#{i}") Present
+            - else if (i == user.job[0].jobTo)
+              option(value="#{i}", selected="selected") #{i}
+            - else
+              option(value="#{i}") #{i}
+        br
+        a(href="#", id="register-add-another-job") Add Another +
+
+        h3.form-heading Looking for
+        hr
+        label(for="roleSeeking") Position Seeking:
+        input(type="text", name="roleSeeking", id="register-role-seeking", class="required", value="#{user.roleSeeking}")
+        br
+        label() Desired Duration:
+        select(name="desiredDurationNumber", id="register-desired-duration-number")
+            - for (i = 1; i < 13; i++) {
+                - if (i == user.desiredDurationNumber)
+                  option(value="#{i}", selected="selected") #{i}
+                - else
+                  option(value="#{i}") #{i}
+            - }
+        select(name="desiredDurationScale", id="register-desired-duration-scale")
+          - var scales = ["days", "weeks", "months", "years"]
+          each scale in scales
+            - if (scale == user.desiredDurationScale)
+              option(value="#{scale}", selected="selected") #{scale}
+            - else
+              option(value="#{scale}")
+        br
+        input(type="submit", id="register-submit", class="submit-button", value="Update")
+        a(href="/users/#{user.username}/remove", class="remove-user") Delete Profile

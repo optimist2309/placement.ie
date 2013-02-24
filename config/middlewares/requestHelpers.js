@@ -36,3 +36,24 @@ exports.modifyRegister = function(req, files) {
 
   return req
 }
+
+exports.modifyUpdate = function(req) {
+  // Password
+  passwordHelpers.saltAndHash(req.password, function(hash) {
+    req.password = hash
+  })
+
+  // Date of birth
+  if (req.monthOfBirth.length == 1) {
+    req.monthOfBirth = '0' + req.monthOfBirth
+  }
+  if (req.dayOfBirth.length == 1) {
+    req.dayOfBirth = '0' + req.dayOfBirth
+  }
+  req.dateOfBirth = req.yearOfBirth + req.monthOfBirth + req.dayOfBirth
+
+  // Desired duration
+  req.desiredDuration = req.desiredDurationNumber + " " + req.desiredDurationScale
+
+  return req
+}
