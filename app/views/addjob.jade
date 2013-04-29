@@ -1,0 +1,40 @@
+extends layout
+
+block content
+    section.main-content.employer-main-content
+        div.section-title
+            h2 #{employer.name}
+        div.main-content-padded
+            form#add-job.form-display(action="/employers/#{employer.username}/jobs", method="POST", enctype="multipart/form-data")
+                h3.form-heading Add Position
+                hr
+
+                label(for="jobTitle") Title:
+                input(type="text", name="jobTitle", id="add-job-title", class="required", value="")
+                br
+
+                label(for="jobDesc") Description:
+                textarea(name="jobDesc", id="add-job-desc", class="required")
+                br
+
+                label Start Date:
+                select(name="startDateMonth", id="add-job-start-month")
+                    - months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+                    each month, i in months
+                        option(value="#{i+1}") #{month}
+                select(name="startDateYear", id="add-job-start-year")
+                    option(value="2013") 2013
+                    option(value="2014") 2014
+                br
+
+                label End Date:
+                select(name="endDateMonth", id="add-job-end-month")
+                    - var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+                    each month, i in months
+                        option(value="#{i+1}") #{month}
+                select(name="endDateYear", id="add-job-end-year")
+                    option(value="2013") 2013
+                    option(value="2014") 2014
+                br
+
+                input(type="submit", id="add-submit", class="submit-button", value="Add Position")

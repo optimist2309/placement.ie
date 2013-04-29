@@ -298,6 +298,10 @@ h1.logo span.ie
     height 100px
     background #BBBBBB
     border 1px solid #999999
+    & img
+      width 100px
+      height 100px
+      border none
   & .company-text
     float right
     width 430px
@@ -308,19 +312,21 @@ h1.logo span.ie
       color #888888
       font-size 90%
     & p.description
+      height 56px
+      overflow hidden
       margin 0
 
 
 /*
  * Profile Pages
  */
-.user-profile-photo
+.user-profile-photo, .employer-profile-photo
   width 150px
   height 150px
   float left
   border 1px solid #AAAAAA
 
-table.user-profile-main
+table.user-profile-main, table.employer-profile-main
   width 398px
   height 152px
   float right
@@ -333,7 +339,7 @@ h3.info-heading
   font-size 150%
   margin-top 28pt
 
-table.user-profile-table
+table.user-profile-table, table.employer-profile-table
   width 550px
   & tr:nth-child(odd)
     background #DDDDDD
@@ -390,6 +396,8 @@ table.user-profile-table
           font-size 90%
         & p.description
           margin 0
+          max-height 37px
+          overflow hidden
 
 
 /*
@@ -429,6 +437,9 @@ h3.form-heading
 #register-photo
   margin-top 4px
 
+.employer-register-photo
+  margin 4px 0
+
 #register-college
   width 186px
 
@@ -462,6 +473,20 @@ a.remove-user
 
 #remove-submit
   margin 0
+
+.remove-job
+  background maincolor
+  color white
+  border 1px solid #1D4F8A
+  padding 0 3px
+  margin 0
+  text-align center
+  cursor pointer
+  border-radius 0 !important
+
+.work-experience-fields hr.experience-separator
+  background-color #BABABA
+  margin 14pt 0
 
 /*
  * Messages

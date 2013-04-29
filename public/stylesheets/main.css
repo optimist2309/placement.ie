@@ -328,6 +328,11 @@ h1.logo span.ie {
   background: #bbb;
   border: 1px solid #999;
 }
+.job-overview a.company-photo img {
+  width: 100px;
+  height: 100px;
+  border: none;
+}
 .job-overview .company-text {
   float: right;
   width: 430px;
@@ -341,43 +346,53 @@ h1.logo span.ie {
   font-size: 90%;
 }
 .job-overview .company-text p.description {
+  height: 56px;
+  overflow: hidden;
   margin: 0;
 }
 /*
  * Profile Pages
  */
-.user-profile-photo {
+.user-profile-photo,
+.employer-profile-photo {
   width: 150px;
   height: 150px;
   float: left;
   border: 1px solid #aaa;
 }
-table.user-profile-main {
+table.user-profile-main,
+table.employer-profile-main {
   width: 398px;
   height: 152px;
   float: right;
 }
-table.user-profile-main tr:nth-child(odd) {
+table.user-profile-main tr:nth-child(odd),
+table.employer-profile-main tr:nth-child(odd) {
   background: #ddd;
 }
-table.user-profile-main td {
+table.user-profile-main td,
+table.employer-profile-main td {
   padding: 10px 10px 7px;
 }
 h3.info-heading {
   font-size: 150%;
   margin-top: 28pt;
 }
-table.user-profile-table {
+table.user-profile-table,
+table.employer-profile-table {
   width: 550px;
 }
-table.user-profile-table tr:nth-child(odd) {
+table.user-profile-table tr:nth-child(odd),
+table.employer-profile-table tr:nth-child(odd) {
   background: #ddd;
 }
-table.user-profile-table td {
+table.user-profile-table td,
+table.employer-profile-table td {
   padding: 7px;
   line-height: 14pt;
 }
-table.user-profile-table td.first-td {
+table.user-profile-table td.first-td,
+table.employer-profile-table td.first-td {
   width: 200px;
 }
 /*
@@ -439,6 +454,8 @@ table.user-profile-table td.first-td {
 }
 .sidebar .sidebar-section .sidebar-section-item .sidebar-section-item-text p.description {
   margin: 0;
+  max-height: 37px;
+  overflow: hidden;
 }
 /*
  * Forms
@@ -479,6 +496,9 @@ h3.form-heading:first-child {
 #register-photo {
   margin-top: 4px;
 }
+.employer-register-photo {
+  margin: 4px 0;
+}
 #register-college {
   width: 186px;
 }
@@ -513,6 +533,20 @@ a.remove-user {
 }
 #remove-submit {
   margin: 0;
+}
+.remove-job {
+  background: #2e75c7;
+  color: #fff;
+  border: 1px solid #1d4f8a;
+  padding: 0 3px;
+  margin: 0;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 0 !important;
+}
+.work-experience-fields hr.experience-separator {
+  background-color: #bababa;
+  margin: 14pt 0;
 }
 /*
  * Messages

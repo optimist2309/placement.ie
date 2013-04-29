@@ -2,3 +2,4 @@ node_modules/
 .project
 uploads/
 public/uploads/
+.idea/

@@ -1,0 +1,42 @@
+extends layout
+
+block content
+    section.main-content.employer-main-content
+        div.section-title
+            h2 #{profile.name}
+        div.main-content-padded
+            - if (profile.photo)
+                img(src="#{profile.photo}", alt="#{profile.username}", class="employer-profile-photo")
+            - else
+                img(src="images/no-photo.png", alt="#{profile.username}")
+
+            table.employer-profile-main
+                - var mainInfo = [profile.name, profile.industry, profile.county, "< " + profile.employees, profile.jobs.length]
+                - var mainInfoLabels = ["Company", "Industry", "Location", "Employees", "Current Positions"]
+                each item, i in mainInfo
+                    - if (item || item == 0)
+                        tr
+                            td #{mainInfoLabels[i]}:
+                            td= item
+            div.clear
+
+            h3.info-heading #{job.jobTitle}
+            hr
+
+            table.employer-profile-table.employer-job-details
+                tr
+                    td Title:
+                    td #{job.jobTitle}
+                - var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+                - var jobFrom = months[String(job.jobFrom).substr(4, 2) - 1] + " " + String(job.jobFrom).substr(0, 4)
+                - var jobTo = months[String(job.jobTo).substr(4, 2) - 1] + " " + String(job.jobTo).substr(0, 4)
+                tr
+                    td Duration:
+                    td= jobFrom + " - " + jobTo
+                tr
+                    td Description:
+                    td #{job.jobDesc}
+
+            - if (employer)
+                - if (employer.username == profile.username)
+                    a(href="/employers/#{profile.username}/jobs/#{jobIndex + 1}/edit", class="employer-new-job-link") Edit Position

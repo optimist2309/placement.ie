@@ -1,55 +1,61 @@
 extends layout
 
 block content
-  section.main-content.user-main-content
-    div.section-title
-      h2 #{profile.forename} #{profile.surname}
-    div.main-content-padded
-      - if (profile.photo)
-        img(src="#{profile.photo}", alt="#{profile.username}", class="user-profile-photo")
-      - else
-        img(src="images/no-photo.png", alt="#{profile.username}")
-      table.user-profile-main
-        - var mainInfo = [profile.forename + " " + profile.surname, profile.dateOfBirth, profile.county, profile.roleSeeking, profile.desiredDuration]
-        - var mainInfoLabels = ["Name", "Date Of Birth", "Living In", "Position Seeking", "Duration"]
-        each item, i in mainInfo
-          tr
-            td #{mainInfoLabels[i]}:
-            td= item
-      div.clear
+    section.main-content.user-main-content
+        div.section-title
+            h2 #{profile.forename} #{profile.surname}
+        div.main-content-padded
+            - if (profile.photo)
+                img(src="#{profile.photo}", alt="#{profile.username}", class="user-profile-photo")
+            - else
+                img(src="images/no-photo.png", alt="#{profile.username}")
 
-      h3.info-heading Education
-      hr
-      table.user-profile-table.user-profile-education
-        - var collegeInfo = [profile.college, profile.collegeCourse, profile.collegeFrom + " - " + profile.collegeTo]
-        - var collegeInfoLabels = ["College", "Course Title", "Years Attended"]
-        each item, i in collegeInfo
-          - if (item)
-            tr
-              td #{collegeInfoLabels[i]}:
-              td= item
-        tr
-          td &nbsp;
-          td
+            table.user-profile-main
+                - var mainInfo = [profile.forename + " " + profile.surname, profile.dateOfBirth, profile.county, profile.roleSeeking, profile.desiredDuration]
+                - var mainInfoLabels = ["Name", "Date Of Birth", "Living In", "Position Seeking", "Duration"]
+                each item, i in mainInfo
+                    tr
+                        td #{mainInfoLabels[i]}:
+                        td= item
+            div.clear
 
-        - var leavingCert = (profile.leavingCert == true) ? "Completed" : "Not Completed"
-        - var schoolInfo = [profile.school, leavingCert, profile.schoolFrom + " - " + profile.schoolTo]
-        - var schoolInfoLabels = ["High School", "Leaving Certificate", "Years Attended"]
-        each item, i in schoolInfo
-          - if (item)
-            tr
-              td.first-td #{schoolInfoLabels[i]}:
-              td= item
+            h3.info-heading Education
+            hr
 
-      h3.info-heading Work Experience
-      hr
-      - if (profile.job)
-        table.user-profile-table.user-profile-experience
-          each job in profile.job
-            - var jobInfo = [job.employer, job.jobTitle, job.jobDesc, job.jobFrom + " - " + job.jobTo]
-            - var jobInfoLabels = ["Employer", "Position", "Description", "Years Employed"]
-            each item, i in jobInfo
-              - if (item)
-                tr
-                  td.first-td #{jobInfoLabels[i]}:
-                  td= item
+            table.user-profile-table.user-profile-education
+                - var collegeInfo = [profile.college, profile.collegeCourse, profile.collegeFrom + " - " + profile.collegeTo]
+                - var collegeInfoLabels = ["College", "Course Title", "Years Attended"]
+                each item, i in collegeInfo
+                    - if (item)
+                        tr
+                            td #{collegeInfoLabels[i]}:
+                            td= item
+                        tr
+                            td &nbsp;
+                            td
+
+                - var leavingCert = (profile.leavingCert == true) ? "Completed" : "Not Completed"
+                - var schoolInfo = [profile.school, leavingCert, profile.schoolFrom + " - " + profile.schoolTo]
+                - var schoolInfoLabels = ["High School", "Leaving Certificate", "Years Attended"]
+                each item, i in schoolInfo
+                    - if (item)
+                        tr
+                            td.first-td #{schoolInfoLabels[i]}:
+                            td= item
+
+            h3.info-heading Work Experience
+            hr
+
+            - if (profile.job[0] != null)
+                table.user-profile-table.user-profile-experience
+                    each job in profile.job
+                        - var jobInfo = [job.employer, job.jobTitle, job.jobDesc, job.jobFrom + " - " + job.jobTo]
+                        - var jobInfoLabels = ["Employer", "Position", "Description", "Years Employed"]
+                        each item, i in jobInfo
+                            - if (item)
+                                tr
+                                    td.first-td #{jobInfoLabels[i]}:
+                                    td= item
+                        tr
+                            td &nbsp;
+                            td &nbsp;

@@ -1,0 +1,92 @@
+extends layout
+
+block content
+    section.main-content.employers-main-content
+        div.section-title
+            h2 Employers
+        div.main-content-padded
+            form#employer-login.form-display(action="/employers/login", method="GET", enctype="multipart/form-data")
+                h3.form-heading Log In
+                hr
+
+                p If your company already has an account with us, you can log in below.
+
+                label(for="username") Username:
+                input(type="text", name="username", id="employer-login-username", class="required", value="")
+                br
+
+                label(for="password") Password:
+                input(type="password", name="password", id="employer-login-password", class="required", value="")
+                br
+
+                input(type="submit", id="employer-login-submit", class="submit-button", value="Log In")
+                br
+                br
+
+            form#register.form-display.register-or-update(action="/employers/new", method="POST", enctype="multipart/form-data")
+                h3.form-heading Register
+                hr
+
+                p If you want to register your company, fill out the form below.
+
+                label(for="username") Username:
+                input(type="text", name="username", id="register-username", class="required", value="")
+                br
+
+                label(for="email") Email:
+                input(type="text", name="email", id="register-email", class="required", value="")
+                br
+
+                label Confirm Email:
+                input(type="text", id="register-confirm-email", class="required", value="")
+                br
+
+                label(for="password") Password:
+                input(type="password", name="password", id="register-password", class="required", value="")
+                br
+
+                label Confirm Password:
+                input(type="password", id="register-confirm-password", class="required", value="")
+                span(id="register-password-hint") Passwords do not match
+                br
+
+                label(for="photo") Company Logo:
+                input(type="file", name="photo", id="register-photo", class="employer-register-photo")
+                br
+
+                label(for="name") Name:
+                input(type="text", name="name", id="register-name", class="required", value="")
+                br
+
+                label(for="industry") Industry:
+                input(type="text", name="industry", id="register-industry", class="required", value="")
+                br
+
+                label(for="employees") Employees:
+                - var numEmployeeLabels = ["< 10", "< 50", "< 250", "< 1,000", "< 10,000", "< 500,000", "~ 1,000,000"]
+                - var numEmployeeValues = [10, 50, 250, 1000, 10000, 500000, 1000000]
+                select(name="employees")
+                    each item, i in numEmployeeLabels
+                        option(value="#{numEmployeeValues[i]}") #{item}
+                br
+
+                label(for="description") Brief Description:
+                textarea(name="description", id="register-description")
+                br
+
+                label(for="addressLine1") Address Line 1:
+                input(type="text", name="addressLine1", id="register-address-line-1", value="")
+                br
+
+                label(for="addressLine2") Address Line 2:
+                input(type="text", name="addressLine2", id="register-address-line-2", value="")
+                br
+
+                label(for="townCity") Town / City:
+                input(type="text", name="townCity", id="register-town-city", value="")
+                br
+
+                label(for="county") County:
+                input(type="text", name="county", id="register-county", class="required", value="")
+
+                input(type="submit", id="register-submit", class="submit-button", value="Register")

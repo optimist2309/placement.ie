@@ -1,34 +1,36 @@
 section.sidebar
 
-  div.sidebar-section.sidebar-employers
-    div.section-title
-      h2 Employers
-    - for (i = 0; i < 2; i++)
-      div.sidebar-section-item
-        a.sidebar-section-item-photo.company-photo(href="#")
-        div.sidebar-section-item-text.company-text
-          h4.sidebar-section-item-title.company-name
-            a(href="#") Sample Company
-          p.meta-data Industry: Technology
-          p.description Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        div.clear
+    div.sidebar-section.sidebar-employers
+        div.section-title
+            h2 Employers
+        each company in companies
+            div.sidebar-section-item
+                a.sidebar-section-item-photo.company-photo(href="/companies/#{company.username}")
+                    - if (company.photo)
+                        img(src="#{company.photo}", alt="#{company.username}")
+                div.sidebar-section-item-text.company-text
+                    h4.sidebar-section-item-title.company-name
+                        a(href="/employers/#{company.username}") #{company.name}
+                    p.meta-data Industry: #{company.industry}
+                    p.description #{company.description}
+                div.clear
 
-  div.sidebar-section.sidebar-candidates
-    div.section-title
-      h2 Jobseekers
-    each jobseeker in jobseekers
-      div.sidebar-section-item
-        a.sidebar-section-item-photo.candidate-photo(href="/users/#{jobseeker.username}")
-          - if (jobseeker.photo)
-            img(src="#{jobseeker.photo}", alt="#{jobseeker.username}")
-        div.sidebar-section-item-text.candidate-text
-          h4.sidebar-section-item-title.candidate-name
-            a(href="/users/#{jobseeker.username}") #{jobseeker.forename} #{jobseeker.surname}
-          - if (jobseeker.college)
-            p.meta-data #{jobseeker.college}
-          - else if (jobseeker.school)
-            p.meta-data #{jobseeker.school}
-          - else
-            p.meta-data #{jobseeker.roleSeeking}
-          p.description Currently seeking a #{jobseeker.roleSeeking} position for #{jobseeker.desiredDuration}.
-        div.clear
+    div.sidebar-section.sidebar-candidates
+        div.section-title
+            h2 Jobseekers
+        each jobseeker in jobseekers
+            div.sidebar-section-item
+                a.sidebar-section-item-photo.candidate-photo(href="/users/#{jobseeker.username}")
+                    - if (jobseeker.photo)
+                        img(src="#{jobseeker.photo}", alt="#{jobseeker.username}")
+                div.sidebar-section-item-text.candidate-text
+                    h4.sidebar-section-item-title.candidate-name
+                        a(href="/users/#{jobseeker.username}") #{jobseeker.forename} #{jobseeker.surname}
+                    - if (jobseeker.college)
+                        p.meta-data #{jobseeker.college}
+                    - else if (jobseeker.school)
+                        p.meta-data #{jobseeker.school}
+                    - else
+                        p.meta-data #{jobseeker.roleSeeking}
+                    p.description Currently seeking a #{jobseeker.roleSeeking} position for #{jobseeker.desiredDuration}.
+                div.clear

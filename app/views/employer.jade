@@ -1,0 +1,62 @@
+extends layout
+
+block content
+    section.main-content.employer-main-content
+        div.section-title
+            h2 #{profile.name}
+        div.main-content-padded
+            - if (profile.photo)
+                img(src="#{profile.photo}", alt="#{profile.username}", class="employer-profile-photo")
+            - else
+                img(src="images/no-photo.png", alt="#{profile.username}")
+
+            table.employer-profile-main
+                - var mainInfo = [profile.name, profile.industry, profile.county, "< " + profile.employees, profile.jobs.length]
+                - var mainInfoLabels = ["Company", "Industry", "Location", "Employees", "Current Positions"]
+                each item, i in mainInfo
+                    - if (item || item == 0)
+                        tr
+                            td #{mainInfoLabels[i]}:
+                            td= item
+            div.clear
+
+            h3.info-heading About #{profile.name}
+            hr
+
+            table.employer-profile-table.employer-profile-about
+                - var aboutInfo = [profile.addressLine1, profile.addressLine2, profile.townCity, profile.county]
+                - var aboutInfoLabels = ["Address Line 1", "Address Line 2", "Town/City", "County"]
+                each item, i in aboutInfo
+                    - if (item)
+                        tr
+                            td.first-td #{aboutInfoLabels[i]}:
+                            td= item
+                        tr
+                            td &nbsp;
+                            td
+                        tr
+                            td.first-td Description:
+                            td #{profile.description}
+
+            h3.info-heading Current Positions
+            hr
+
+            table.employer-profile-table.employer-profile-jobs
+                - var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+                each job, i in profile.jobs
+                    - var jobFrom = months[String(job.jobFrom).substr(4, 2) - 1] + " " + String(job.jobFrom).substr(0, 4)
+                    - var jobTo = months[String(job.jobTo).substr(4, 2) - 1] + " " + String(job.jobTo).substr(0, 4)
+                    tr
+                        td
+                            a(href="/employers/#{profile.username}/jobs/#{i+1}") #{job.jobTitle}
+                        td= jobFrom + " - " + jobTo
+                            - if (employer)
+                                - if (employer.username == profile.username)
+                                    td
+                                        form(action="/employers/#{employer.username}/jobs/#{i}", method="POST", enctype="multipart/form-data")
+                                            input(type="hidden", name="_method", value="DELETE")
+                                            input(type="submit", value="x", class="remove-job")
+
+                - if (employer)
+                    - if (employer.username == profile.username)
+                        a(href="/employers/#{employer.username}/jobs/new", class="employer-new-job-link") Add Position

@@ -1,0 +1,15 @@
+header.page-header
+    h1.logo
+        a(href="#{homeUrl}") placement<span class="dot">.</span><span class="ie">ie</span>
+    section.login-register.user-admin-bar.employer-admin-bar
+        img(src="#{employer.photo}", alt="#{employer.username}")
+        div.user-admin-bar-info.employer-admin-bar-info
+            h5 #{employer.name}
+            hr
+            p
+                a(href="/employers/#{employer.username}") View Profile
+                | &nbsp;|&nbsp;
+                a(href="/employers/#{employer.username}/edit") Edit
+                | &nbsp;|&nbsp;
+                a(href="/employers/logout") Log Out
+        div.clear

@@ -1,0 +1,15 @@
+header.page-header
+    h1.logo
+        a(href="#{homeUrl}") placement<span class="dot">.</span><span class="ie">ie</span>
+    section.login-register.user-admin-bar
+        img(src="#{user.photo}", alt="#{user.username}")
+        div.user-admin-bar-info
+            h5 Hello #{user.forename}
+            hr
+            p
+                a(href="/users/#{user.username}") View Profile
+                | &nbsp;|&nbsp;
+                a(href="/users/#{user.username}/edit") Edit
+                | &nbsp;|&nbsp;
+                a(href="/users/logout") Log Out
+        div.clear
