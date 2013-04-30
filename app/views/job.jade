@@ -25,18 +25,38 @@ block content
 
             table.employer-profile-table.employer-job-details
                 tr
-                    td Title:
+                    td.first-td Title:
                     td #{job.jobTitle}
                 - var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
                 - var jobFrom = months[String(job.jobFrom).substr(4, 2) - 1] + " " + String(job.jobFrom).substr(0, 4)
                 - var jobTo = months[String(job.jobTo).substr(4, 2) - 1] + " " + String(job.jobTo).substr(0, 4)
                 tr
-                    td Duration:
+                    td.first-td Duration:
                     td= jobFrom + " - " + jobTo
                 tr
-                    td Description:
+                    td.first-td Description:
                     td #{job.jobDesc}
+            br
 
             - if (employer)
-                - if (employer.username == profile.username)
-                    a(href="/employers/#{profile.username}/jobs/#{jobIndex + 1}/edit", class="employer-new-job-link") Edit Position
+                - if (job.applicants[0] !== null && employer.username === profile.username)
+                    h3.info-heading Applicants
+                    hr
+
+                    table.employer-profile-table
+                        each applicant in job.applicants
+                            tr
+                                td.first-td Username:
+                                td
+                                    a(href="/users/#{applicant}") #{applicant}
+
+                    br
+
+            - if (user)
+                form#apply-for-job(action="/employers/#{profile.username}/jobs/#{jobIndex + 1}/apply", method="POST", enctype="multipart/form-data")
+                    input(type="hidden", name="_method", value="PUT")
+
+                    input(type="hidden", name="employer", value="#{profile.username}")
+                    input(type="hidden", name="jobId", value="#{jobIndex}")
+
+                    input(type="submit", id="apply-submit", class="submit-button no-margin", value="Apply")

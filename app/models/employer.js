@@ -24,7 +24,8 @@ var EmployerSchema = new Schema({
         jobTitle: String,
         jobDesc: String,
         jobFrom: Number,
-        jobTo: Number
+        jobTo: Number,
+        applicants: []
     }],
     joinDate: {type: Date, default: Date.now},
     latestJob: String

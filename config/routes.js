@@ -8,6 +8,7 @@ module.exports = function(app) {
     app.get('/?register=success', home.show);
 
     // User routes
+    app.get('/users', users.list);
     app.get('/users/login', users.logIn);
     app.get('/users/new', users.register);
     app.get('/users/logout', users.logOut);
@@ -20,6 +21,7 @@ module.exports = function(app) {
 
     // Employer routes
     app.get('/employers', employers.showLoginRegister);
+    app.get('/jobs', employers.listJobs);
     app.get('/employers/login', employers.logIn);
     app.get('/employers/logout', employers.logOut);
     app.get('/employers/:username', employers.show);
@@ -30,7 +32,6 @@ module.exports = function(app) {
     app.get('/employers/:username/jobs/new', employers.showAddJob);
     app.post('/employers/:username/jobs', employers.addJob);
     app.get('/employers/:username/jobs/:id', employers.showJob);
-    app.put('/employers/:username/jobs/:id', employers.editJob);
     app.del('/employers/:username/jobs/:id', employers.deleteJob);
-    app.get('/employers/:username/jobs/:id/edit', employers.showEditJob);
+    app.put('/employers/:username/jobs/:id/apply', employers.applyForJob);
 };

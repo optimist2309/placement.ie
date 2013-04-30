@@ -189,7 +189,35 @@ exports.delete = function(req, res) {
  * @param res
  */
 exports.listJobs = function(req, res) {
+    var user = null;
+    var employer = null;
+    var jobEmployers = [];
 
+    if (req.session.employer) {
+        employer = req.session.employer;
+    } else if (req.session.user) {
+        user = req.session.user;
+    }
+
+    Employer.find().sort('-latestJob').exec(function(err, employers) {
+        var i;
+        for (i = 0; i < employers.length; i++) {
+            if (employers[i].jobs.length !== 0) {
+                jobEmployers.push(employers[i]);
+            }
+        }
+
+        sidebarData.getHomeData(function(err, jobseekers, companies) {
+            res.render('jobs', {
+                subtitle: 'Available Jobs',
+                jobseekers: jobseekers,
+                companies: companies,
+                user: user,
+                employer: employer,
+                jobEmployers: jobEmployers
+            });
+        });
+    });
 };
 
 /**
@@ -290,16 +318,6 @@ exports.showJob = function(req, res) {
 };
 
 /**
- * Edit a job posting.
- *
- * @param req
- * @param res
- */
-exports.editJob = function(req, res) {
-
-};
-
-/**
  * Delete a job posting.
  *
  * @param req
@@ -343,11 +361,26 @@ exports.deleteJob = function(req, res) {
 };
 
 /**
- * Show the "edit job" form.
+ * Apply for job.
  *
  * @param req
  * @param res
  */
-exports.showEditJob = function(req, res) {
+exports.applyForJob = function(req, res) {
+    var user = null;
+    var jobId = req.body.jobId;
 
+    if (req.session.user) {
+        user = req.session.user;
+
+        Employer.findOne({username: req.body.employer}, function(err, employer) {
+            var job = employer.jobs[jobId];
+            job.applicants.push(user.username);
+
+            employer.jobs.set(jobId, job);
+            employer.save();
+
+            res.redirect('/?apply=success');
+        });
+    }
 };

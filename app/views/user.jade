@@ -28,11 +28,11 @@ block content
                 each item, i in collegeInfo
                     - if (item)
                         tr
-                            td #{collegeInfoLabels[i]}:
+                            td.first-td #{collegeInfoLabels[i]}:
                             td= item
-                        tr
-                            td &nbsp;
-                            td
+                tr
+                    td &nbsp;
+                    td
 
                 - var leavingCert = (profile.leavingCert == true) ? "Completed" : "Not Completed"
                 - var schoolInfo = [profile.school, leavingCert, profile.schoolFrom + " - " + profile.schoolTo]
@@ -43,10 +43,10 @@ block content
                             td.first-td #{schoolInfoLabels[i]}:
                             td= item
 
-            h3.info-heading Work Experience
-            hr
-
             - if (profile.job[0] != null)
+                h3.info-heading Work Experience
+                hr
+
                 table.user-profile-table.user-profile-experience
                     each job in profile.job
                         - var jobInfo = [job.employer, job.jobTitle, job.jobDesc, job.jobFrom + " - " + job.jobTo]

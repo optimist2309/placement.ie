@@ -280,3 +280,33 @@ exports.show = function(req, res) {
         });
     });
 };
+
+/**
+ * List all users.
+ *
+ * @param req
+ * @param res
+ */
+exports.list = function(req, res) {
+    User.find().sort('-joinDate').exec(function(err, userList) {
+        var user = null;
+        var employer = null;
+
+        if (req.session.user) {
+            user = req.session.user;
+        } else if (req.session.employer) {
+            employer = req.session.employer;
+        }
+
+        sidebarData.getDefaultSidebar(function(err, jobseekers, companies) {
+            res.render('users', {
+                subtitle: 'Users',
+                jobseekers: jobseekers,
+                companies: companies,
+                user: user,
+                employer: employer,
+                userList: userList
+            });
+        });
+    });
+};

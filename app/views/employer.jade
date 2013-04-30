@@ -31,12 +31,12 @@ block content
                         tr
                             td.first-td #{aboutInfoLabels[i]}:
                             td= item
-                        tr
-                            td &nbsp;
-                            td
-                        tr
-                            td.first-td Description:
-                            td #{profile.description}
+                tr
+                    td &nbsp;
+                    td
+                tr
+                    td.first-td Description:
+                    td #{profile.description}
 
             h3.info-heading Current Positions
             hr
@@ -56,7 +56,8 @@ block content
                                         form(action="/employers/#{employer.username}/jobs/#{i}", method="POST", enctype="multipart/form-data")
                                             input(type="hidden", name="_method", value="DELETE")
                                             input(type="submit", value="x", class="remove-job")
+            br
 
-                - if (employer)
-                    - if (employer.username == profile.username)
-                        a(href="/employers/#{employer.username}/jobs/new", class="employer-new-job-link") Add Position
+            - if (employer)
+                - if (employer.username == profile.username)
+                    a(href="/employers/#{employer.username}/jobs/new", class="employer-new-job-link") Add Position

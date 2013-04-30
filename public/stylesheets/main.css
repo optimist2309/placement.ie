@@ -305,47 +305,74 @@ h1.logo span.ie {
 /*
  * Jobpages Main Content
  */
-.job-overview {
+.job-overview,
+.user-overview {
   padding: 15px;
   border-top: 1px solid #ccc;
 }
-.job-overview:nth-child(odd) {
+.job-overview:nth-child(odd),
+.user-overview:nth-child(odd) {
   background: #ddd;
 }
-.job-overview:nth-child(odd):hover {
+.job-overview:nth-child(odd):hover,
+.user-overview:nth-child(odd):hover {
   background: #d7d7d7;
 }
-.job-overview:hover {
+.job-overview:hover,
+.user-overview:hover {
   background: #e8e8e8;
 }
-.job-overview:last-child {
+.job-overview:last-child,
+.user-overview:last-child {
   border-radius: 0 0 6px 6px;
 }
-.job-overview a.company-photo {
+.job-overview a.company-photo,
+.user-overview a.company-photo,
+.job-overview a.user-photo,
+.user-overview a.user-photo {
   float: left;
   width: 100px;
   height: 100px;
   background: #bbb;
   border: 1px solid #999;
 }
-.job-overview a.company-photo img {
+.job-overview a.company-photo img,
+.user-overview a.company-photo img,
+.job-overview a.user-photo img,
+.user-overview a.user-photo img {
   width: 100px;
   height: 100px;
   border: none;
 }
-.job-overview .company-text {
+.job-overview .company-text,
+.user-overview .company-text,
+.job-overview .user-text,
+.user-overview .user-text {
   float: right;
   width: 430px;
 }
-.job-overview .company-text h3.company-name {
+.job-overview .company-text h3.company-name,
+.user-overview .company-text h3.company-name,
+.job-overview .user-text h3.company-name,
+.user-overview .user-text h3.company-name,
+.job-overview .company-text h3.user-name,
+.user-overview .company-text h3.user-name,
+.job-overview .user-text h3.user-name,
+.user-overview .user-text h3.user-name {
   font-size: 140%;
 }
-.job-overview .company-text p.meta-data {
+.job-overview .company-text p.meta-data,
+.user-overview .company-text p.meta-data,
+.job-overview .user-text p.meta-data,
+.user-overview .user-text p.meta-data {
   margin: 3px 0;
   color: #888;
   font-size: 90%;
 }
-.job-overview .company-text p.description {
+.job-overview .company-text p.description,
+.user-overview .company-text p.description,
+.job-overview .user-text p.description,
+.user-overview .user-text p.description {
   height: 56px;
   overflow: hidden;
   margin: 0;
@@ -492,6 +519,9 @@ h3.form-heading:first-child {
   border: 1px solid #999;
   text-shadow: 1px 1px 1px #999;
   cursor: default;
+}
+.submit-button.no-margin {
+  margin: 14pt 0 0 0;
 }
 #register-photo {
   margin-top: 4px;

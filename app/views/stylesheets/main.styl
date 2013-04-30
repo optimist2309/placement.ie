@@ -281,7 +281,8 @@ h1.logo span.ie
 /*
  * Jobpages Main Content
  */
-.job-overview
+.job-overview,
+.user-overview
   padding 15px
   border-top 1px solid #CCCCCC
   &:nth-child(odd)
@@ -292,7 +293,7 @@ h1.logo span.ie
     background #E8E8E8
   &:last-child
     border-radius: 0 0 6px 6px
-  & a.company-photo
+  & a.company-photo, a.user-photo
     float left
     width 100px
     height 100px
@@ -302,10 +303,10 @@ h1.logo span.ie
       width 100px
       height 100px
       border none
-  & .company-text
+  & .company-text, .user-text
     float right
     width 430px
-    & h3.company-name
+    & h3.company-name, h3.user-name
       font-size 140%
     & p.meta-data
       margin 3px 0
@@ -433,6 +434,8 @@ h3.form-heading
     border 1px solid #999999
     text-shadow 1px 1px 1px #999999
     cursor default
+  &.no-margin
+    margin: 14pt 0 0 0
 
 #register-photo
   margin-top 4px

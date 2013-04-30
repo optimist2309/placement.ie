@@ -1,0 +1,19 @@
+extends layout
+
+block content
+    section.main-content.users-main-content
+        div.section-title
+            h2 Users
+        each singleUser in userList
+            div.user-overview
+                a.user-photo(href="/users/#{singleUser.username}/")
+                    - if (singleUser.photo)
+                        img(src="#{singleUser.photo}", alt="#{singleUser.username}", class="user-profile-photo")
+                    - else
+                        img(src="images/no-photo.png", alt="#{singleUser.username}")
+                div.user-text
+                    h3.user-name
+                        a(href="/users/#{singleUser.username}/") #{singleUser.forename} #{singleUser.surname}
+                    p.meta-data College: #{singleUser.college} | Location: #{singleUser.county}
+                    p.description Currently seeking a #{singleUser.roleSeeking} role for a duration of #{singleUser.desiredDuration}.
+                div.clear
