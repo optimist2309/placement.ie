@@ -590,3 +590,12 @@ p.message-green {
   color: #47ad53;
   text-align: center;
 }
+p.message-red {
+  background: #edb4b4;
+  padding: 4px;
+  margin: 20px 0;
+  border-radius: 4px;
+  border: 1px solid #c97171;
+  color: #a13838;
+  text-align: center;
+}

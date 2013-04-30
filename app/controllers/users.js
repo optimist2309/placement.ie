@@ -14,7 +14,7 @@ var mongoose        = require('mongoose'),
 exports.logIn = function(req, res) {
     User.findOne({username: req.query.username}, function(err, user) {
         if (!user) {
-            res.send(err, 400);
+            res.redirect("/?login=failed");
         } else {
             passwordHelpers.validatePassword(req.query.password, user.password, function(err, result) {
                 if (result) {
@@ -23,7 +23,7 @@ exports.logIn = function(req, res) {
                     res.cookie('password', user.password, {maxAge: 1200000});
                     res.redirect('/users/' + user.username);
                 } else {
-                    res.send(err, 400);
+                    res.redirect("/?login=failed");
                 }
             });
         }
@@ -305,7 +305,7 @@ exports.list = function(req, res) {
                 companies: companies,
                 user: user,
                 employer: employer,
-                userList: userList
+                userList: userl
             });
         });
     });

@@ -53,10 +53,11 @@ block content
                     br
 
             - if (user)
-                form#apply-for-job(action="/employers/#{profile.username}/jobs/#{jobIndex + 1}/apply", method="POST", enctype="multipart/form-data")
-                    input(type="hidden", name="_method", value="PUT")
+                - if (job.applicants.indexOf(user.username) === -1)
+                    form#apply-for-job(action="/employers/#{profile.username}/jobs/#{jobIndex + 1}/apply", method="POST", enctype="multipart/form-data")
+                        input(type="hidden", name="_method", value="PUT")
 
-                    input(type="hidden", name="employer", value="#{profile.username}")
-                    input(type="hidden", name="jobId", value="#{jobIndex}")
+                        input(type="hidden", name="employer", value="#{profile.username}")
+                        input(type="hidden", name="jobId", value="#{jobIndex}")
 
-                    input(type="submit", id="apply-submit", class="submit-button no-margin", value="Apply")
+                        input(type="submit", id="apply-submit", class="submit-button no-margin", value="Apply")
