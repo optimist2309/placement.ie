@@ -18,22 +18,3 @@ The following is a list of languages and technologies used:
 * CSS3
 * MongoDB (Database)
 * Mocha (Testing)
-
-- - -
-
-##### Next Build
-
-The following features are planned for the next build:
-* Register company
-* Show company profile
-* Update company
-* Delete company
-* More detailed error messages
-
-- - -
-
-##### Bugs
-
-The current bugs are being tracked:
-* Jobs section of user page is showing for users with no experience
-* Selecting "present" as a year still comes up as 2013
