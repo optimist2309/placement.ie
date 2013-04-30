@@ -1,7 +1,7 @@
 {
     "name": "placement.ie",
     "description": "A web application in nodejs for advertising and applying to internships",
-    "version": "0.0.1",
+    "version": "1.1",
     "private": true,
     "author": "Gavin Flood <gavinflud@gmail.com> (http://github.com/gavinflud)",
     "scripts": {
