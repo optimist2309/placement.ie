@@ -1,19 +1,19 @@
 {
-  "name": "placement.ie",
-  "description": "A web application in nodejs for advertising and applying to internships",
-  "version": "0.0.1",
-  "private": true,
-  "author": "Gavin Flood <gavinflud@gmail.com> (http://github.com/gavinflud)",
-  "scripts": {
-    "start": "node server.js"
-  },
-  "dependencies": {
-    "express": "3.0.x",
-    "jade": "0.27.x",
-    "stylus": "0.32.0",
-    "mongoose": "3.5.x",
-    "connect-mongo": "0.2.0",
-    "passport": "0.1.x",
-    "underscore": "1.4.3"
-  }
+    "name": "placement.ie",
+    "description": "A web application in nodejs for advertising and applying to internships",
+    "version": "0.0.1",
+    "private": true,
+    "author": "Gavin Flood <gavinflud@gmail.com> (http://github.com/gavinflud)",
+    "scripts": {
+        "start": "node server.js"
+    },
+    "dependencies": {
+        "express": "3.0.x",
+        "jade": "0.27.x",
+        "stylus": "0.32.0",
+        "mongoose": "3.5.x",
+        "connect-mongo": "0.2.0",
+        "passport": "0.1.x",
+        "underscore": "1.4.3"
+    }
 }
